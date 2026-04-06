@@ -8,9 +8,9 @@ export default function Preloader() {
   const [phase, setPhase] = useState(1)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(2), 2000) // circles explode
-    const t2 = setTimeout(() => setPhase(3), 2800) // name appears
-    const t3 = setTimeout(() => setIsVisible(false), 5000) // fade out
+    const t1 = setTimeout(() => setPhase(2), 3500) // circles explode
+    const t2 = setTimeout(() => setPhase(3), 4500) // name appears
+    const t3 = setTimeout(() => setIsVisible(false), 7500) // fade out
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
