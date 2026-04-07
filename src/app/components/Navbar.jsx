@@ -23,10 +23,10 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 50,
-        backgroundColor: scrolled ? 'rgba(255,255,255,0.95)' : '#ffffff',
+        backgroundColor: scrolled ? 'rgba(255,248,240,0.95)' : '#fff8f0',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        boxShadow: scrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none',
-        borderBottom: '1px solid #f0f0f0',
+        boxShadow: scrolled ? '0 1px 20px rgba(75,46,43,0.08)' : 'none',
+        borderBottom: '1px solid rgba(192,133,82,0.2)',
         transition: 'all 0.3s ease',
       }}
     >
@@ -50,14 +50,14 @@ export default function Navbar() {
             width: 44,
             height: 44,
             borderRadius: 10,
-            backgroundColor: '#111',
+            backgroundColor: '#4b2e2b',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <span style={{ color: '#fff', fontWeight: 800, fontSize: 20 }}>W</span>
+            <span style={{ color: '#fff8f0', fontWeight: 800, fontSize: 20 }}>W</span>
           </div>
-          <span style={{ fontSize: 22, fontWeight: 700, color: '#111', letterSpacing: '-0.5px' }}>
+          <span style={{ fontSize: 22, fontWeight: 700, color: '#4b2e2b', letterSpacing: '-0.5px' }}>
             wissal.
           </span>
         </motion.a>
@@ -65,10 +65,9 @@ export default function Navbar() {
         {/* Nav Links */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 48 }}>
           {[
-            { label: 'Home',     href: '#home' },
+            { label: 'Home',                   href: '#home' },
             { label: 'Services & Technologies', href: '#services' },
-            { label: 'Projects', href: '#projects' },
-        
+            { label: 'Contact',                href: '#contact' },
           ].map((item) => (
             <motion.a
               key={item.label}
@@ -79,12 +78,12 @@ export default function Navbar() {
                 fontWeight: 600,
                 letterSpacing: 2,
                 textTransform: 'uppercase',
-                color: '#555',
+                color: '#8c5a3c',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => e.target.style.color = '#111'}
-              onMouseLeave={e => e.target.style.color = '#555'}
+              onMouseEnter={e => e.target.style.color = '#4b2e2b'}
+              onMouseLeave={e => e.target.style.color = '#8c5a3c'}
             >
               {item.label}
             </motion.a>
@@ -94,15 +93,15 @@ export default function Navbar() {
         {/* Hire Me */}
         <motion.a
           href="#contact"
-          whileHover={{ backgroundColor: '#111', color: '#fff' }}
+          whileHover={{ backgroundColor: '#4b2e2b', color: '#fff8f0' }}
           whileTap={{ scale: 0.95 }}
           style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 2,
             textTransform: 'uppercase',
-            border: '2px solid #111',
-            color: '#111',
+            border: '2px solid #4b2e2b',
+            color: '#4b2e2b',
             padding: '12px 28px',
             borderRadius: 50,
             textDecoration: 'none',
