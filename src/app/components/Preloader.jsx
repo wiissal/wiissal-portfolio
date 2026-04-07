@@ -8,9 +8,9 @@ export default function Preloader() {
   const [phase, setPhase] = useState(1)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(2), 3500) // circles explode
-    const t2 = setTimeout(() => setPhase(3), 4500) // name appears
-    const t3 = setTimeout(() => setIsVisible(false), 7500) // fade out
+    const t1 = setTimeout(() => setPhase(2), 2500) // circles explode
+    const t2 = setTimeout(() => setPhase(3), 3500) // name appears
+    const t3 = setTimeout(() => setIsVisible(false), 5500) // fade out
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
@@ -19,14 +19,21 @@ export default function Preloader() {
   }, [])
 
   const circles = [
-    { size: 90,  x: '15%', y: '25%', floatY: -20, delay: 0    },
-    { size: 130, x: '78%', y: '18%', floatY: 15,  delay: 0.2  },
-    { size: 65,  x: '60%', y: '72%', floatY: -15, delay: 0.4  },
-    { size: 110, x: '12%', y: '68%', floatY: 20,  delay: 0.1  },
-    { size: 55,  x: '88%', y: '58%', floatY: -10, delay: 0.3  },
-    { size: 80,  x: '42%', y: '12%', floatY: 12,  delay: 0.5  },
-    { size: 45,  x: '70%', y: '42%', floatY: -18, delay: 0.15 },
-  ]
+  { size: 90,  x: '15%', y: '25%', floatY: -20, delay: 0    },
+  { size: 130, x: '78%', y: '18%', floatY: 15,  delay: 0.2  },
+  { size: 65,  x: '60%', y: '72%', floatY: -15, delay: 0.4  },
+  { size: 110, x: '12%', y: '68%', floatY: 20,  delay: 0.1  },
+  { size: 55,  x: '88%', y: '58%', floatY: -10, delay: 0.3  },
+  { size: 80,  x: '42%', y: '12%', floatY: 12,  delay: 0.5  },
+  { size: 45,  x: '70%', y: '42%', floatY: -18, delay: 0.15 },
+  { size: 70,  x: '32%', y: '80%', floatY: 16,  delay: 0.25 },
+  { size: 50,  x: '90%', y: '30%', floatY: -12, delay: 0.35 },
+  { size: 100, x: '50%', y: '55%', floatY: 18,  delay: 0.45 },
+  { size: 40,  x: '25%', y: '48%', floatY: -8,  delay: 0.55 },
+  { size: 85,  x: '65%', y: '88%', floatY: 14,  delay: 0.6  },
+  { size: 60,  x: '5%',  y: '45%', floatY: -16, delay: 0.7  },
+  { size: 75,  x: '55%', y: '32%', floatY: 10,  delay: 0.8  },
+]
 
   const firstName = "Wissal"
   const lastName = "Ouboujemaa"
@@ -128,7 +135,7 @@ export default function Preloader() {
                       fontSize: 52,
                       fontWeight: 800,
                       color: '#ffffff',
-                      fontFamily: 'sans-serif',
+                      fontFamily: 'var(--font-playfair)',
                       letterSpacing: 4,
                       lineHeight: 1,
                     }}
@@ -154,7 +161,7 @@ export default function Preloader() {
                       fontSize: 52,
                       fontWeight: 800,
                       color: '#ffffff',
-                      fontFamily: 'sans-serif',
+                      fontFamily: 'var(--font-playfair)',
                       letterSpacing: 4,
                       lineHeight: 1,
                     }}
