@@ -49,7 +49,7 @@ export default function Preloader() {
             position: 'fixed',
             inset: 0,
             zIndex: 9999,
-            backgroundColor: '#0a0a0a',
+            backgroundColor:'#4b2e2b',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -103,7 +103,7 @@ export default function Preloader() {
                 width: circle.size,
                 height: circle.size,
                 borderRadius: '50%',
-                backgroundColor: '#ffffff',
+                backgroundColor: '#fff8f0',
                 transform: 'translate(-50%, -50%)',
               }}
             />
@@ -134,7 +134,7 @@ export default function Preloader() {
                     style={{
                       fontSize: 52,
                       fontWeight: 800,
-                      color: '#ffffff',
+                      color: '#fff8f0',
                       fontFamily: 'var(--font-playfair)',
                       letterSpacing: 4,
                       lineHeight: 1,
@@ -160,7 +160,7 @@ export default function Preloader() {
                     style={{
                       fontSize: 52,
                       fontWeight: 800,
-                      color: '#ffffff',
+                      color: '#fff8f0',
                       fontFamily: 'var(--font-playfair)',
                       letterSpacing: 4,
                       lineHeight: 1,
@@ -179,7 +179,7 @@ export default function Preloader() {
                 style={{
                   fontSize: 13,
                   fontWeight: 400,
-                  color: 'rgba(255,255,255,0.4)',
+                  color: 'rgba(255,248,240,0.5)',
                   fontFamily: 'sans-serif',
                   letterSpacing: 6,
                   textTransform: 'uppercase',
@@ -199,7 +199,7 @@ export default function Preloader() {
               bottom: 0,
               left: 0,
               height: 2,
-              backgroundColor: '#ffffff',
+              backgroundColor: '#c08552',
             }}
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
