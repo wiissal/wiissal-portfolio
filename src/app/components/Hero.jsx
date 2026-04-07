@@ -26,22 +26,12 @@ export default function Hero() {
           gap: 24,
         }}
       >
-        {/* Small label like Zakaria */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          style={{ display: "flex", alignItems: "center", gap: 12 }}
-        >
-          <div
-            style={{
-              width: 40,
-              height: 2,
-              backgroundColor: "#c08552",
-            }}
-          />
+        {/* Label */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ width: 40, height: 2, backgroundColor: "#c08552" }} />
           <span
             style={{
+              marginTop: 10,
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: 3,
@@ -52,64 +42,62 @@ export default function Hero() {
           >
             Design & Code
           </span>
-        </motion.div>
+        </div>
 
-       {/* Line 1 — "Solutions for" */}
-<div style={{ display: 'flex', gap: '0.3em', overflow: 'hidden' }}>
-  {['Solutions', 'for'].map((word, i) => (
-    <motion.span
-      key={word}
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.7,
-        delay: 0.3 + i * 0.12,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      style={{
-        display: 'inline-block',
-        fontSize: 'clamp(48px, 8vw, 96px)',
-        fontWeight: 800,
-        color: '#4b2e2b',
-        lineHeight: 1.05,
-        fontFamily: 'var(--font-playfair)',
-      }}
-    >
-      {word}
-    </motion.span>
-  ))}
-</div>
+        {/* Line 1 */}
+        <div style={{ display: "flex", gap: "0.3em" }}>
+          <span
+            style={{
+              fontSize: "clamp(48px, 8vw, 96px)",
+              fontWeight: 800,
+              color: "#4b2e2b",
+              lineHeight: 1.05,
+              fontFamily: "var(--font-playfair)",
+            }}
+          >
+            Solutions
+          </span>
+          <span
+            style={{
+              fontSize: "clamp(48px, 8vw, 96px)",
+              fontWeight: 800,
+              color: "#4b2e2b",
+              lineHeight: 1.05,
+              fontFamily: "var(--font-playfair)",
+            }}
+          >
+            for
+          </span>
+        </div>
 
-{/* Line 2 — "your business." */}
-<div style={{ display: 'flex', gap: '0.3em', overflow: 'hidden' }}>
-  {['your', 'business.'].map((word, i) => (
-    <motion.span
-      key={word}
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.7,
-        delay: 0.55 + i * 0.12,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      style={{
-        display: 'inline-block',
-        fontSize: 'clamp(48px, 8vw, 96px)',
-        fontWeight: 800,
-        color: '#c08552',
-        lineHeight: 1.05,
-        fontFamily: 'var(--font-playfair)',
-      }}
-    >
-      {word}
-    </motion.span>
-  ))}
-</div>
+        {/* Line 2 */}
+        <div style={{ display: "flex", gap: "0.3em" }}>
+          <span
+            style={{
+              fontSize: "clamp(48px, 8vw, 96px)",
+              fontWeight: 800,
+              color: "#c08552",
+              lineHeight: 1.05,
+              fontFamily: "var(--font-playfair)",
+            }}
+          >
+            your
+          </span>
+          <span
+            style={{
+              fontSize: "clamp(48px, 8vw, 96px)",
+              fontWeight: 800,
+              color: "#c08552",
+              lineHeight: 1.05,
+              fontFamily: "var(--font-playfair)",
+            }}
+          >
+            business.
+          </span>
+        </div>
+
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+        <p
           style={{
             fontSize: 18,
             color: "#8c5a3c",
@@ -119,18 +107,13 @@ export default function Hero() {
             margin: 0,
           }}
         >
-          Wissal Ouboujemaa Fullstack & Mobile Developer based in Morocco 🇲🇦 , building clean,
-          performant web and mobile apps that create real impact for your
-          business and your daily life . .
-        </motion.p>
+          Wissal Ouboujemaa , I am a Fullstack & Mobile Developer based in Morocco 🇲🇦
+          building clean, performant web and mobile apps that create real
+          impact in your businesses and your daily lives.
+        </p>
 
         {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          style={{ display: "flex", gap: 16, marginTop: 8 }}
-        >
+        <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
           <motion.a
             href="#projects"
             whileHover={{ scale: 1.05 }}
@@ -146,12 +129,10 @@ export default function Hero() {
               textDecoration: "none",
               fontFamily: "sans-serif",
               textTransform: "uppercase",
-              transition: "all 0.2s",
             }}
           >
             See My Work
           </motion.a>
-
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -168,18 +149,14 @@ export default function Hero() {
               fontFamily: "sans-serif",
               textTransform: "uppercase",
               border: "2px solid #4b2e2b",
-              transition: "all 0.2s",
             }}
           >
             Hire Me
           </motion.a>
-        </motion.div>
+        </div>
 
-        {/* Stats row like Zakaria */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
+        {/* Stats */}
+        <div
           style={{
             display: "flex",
             gap: 48,
@@ -219,7 +196,7 @@ export default function Hero() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
