@@ -330,7 +330,7 @@ export default function Projects() {
                   boxShadow: isActive
                     ? "0 40px 80px rgba(75,46,43,0.4), 0 0 0 1px rgba(192,133,82,0.4)"
                     : "0 4px 20px rgba(75,46,43,0.08)",
-                  filter: isActive ? "none" : "brightness(0.55) saturate(0.65)",
+                  filter: isActive ? "none" : "brightness(0.2) saturate(0.55)",
                   transformStyle: "preserve-3d",
                 }}
               >
@@ -342,8 +342,7 @@ export default function Projects() {
                     style={{
                       objectFit: "cover",
                       objectPosition: "center",
-                      opacity: isHovered ? 0.95 : isActive ? 0.85 : 0.65,
-                      transition: "opacity 0.5s ease, transform 0.6s ease",
+                      opacity: isHovered ? 1 : isActive ? 0.9 : 0.85,
                       transform: isHovered ? "scale(1.06)" : "scale(1)",
                     }}
                   />
