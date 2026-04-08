@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const projects = [
   {
@@ -55,349 +55,448 @@ const projects = [
   },
 ];
 
+const CARD_WIDTH = 320;
+const GAP = 20;
+
 export default function Projects() {
   const scrollRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [current, setCurrent] = useState(0);
+  const [hoveredId, setHoveredId] = useState(null);
+  const [visible, setVisible] = useState({});
+  const total = projects.length;
 
-  const scroll = (direction) => {
+  useEffect(() => {
+    const observers = [];
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTimeout(
+              () => setVisible((prev) => ({ ...prev, [i]: true })),
+              i * 100,
+            );
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.15 },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const goTo = (index) => {
+    const next = Math.max(0, Math.min(index, total - 1));
+    setCurrent(next);
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -400 : 400,
+      scrollRef.current.scrollTo({
+        left: next * (CARD_WIDTH + GAP),
         behavior: "smooth",
       });
     }
   };
 
+  const pad = (n) => String(n).padStart(2, "0");
+
   return (
-    <section
-      id="projects"
-      style={{ backgroundColor: "#fff8f0", padding: "100px 0" }}
-    >
-      <div
+    <>
+      <style>{`
+        @keyframes cardIn {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+
+      <section
+        id="projects"
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 40px",
-          marginBottom: 60,
+          backgroundColor: "#fff8f0",
+          padding: "100px 0",
+          scrollMarginTop: "80px",
         }}
       >
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 40px",
+            marginBottom: 50,
           }}
         >
-          <div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                marginBottom: 16,
-              }}
-            >
-              <div
-                style={{ width: 40, height: 2, backgroundColor: "#c08552" }}
-              />
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: 3,
-                  textTransform: "uppercase",
-                  color: "#c08552",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                My Work
-              </span>
-            </div>
-            <h2
-              style={{
-                fontSize: "clamp(36px, 5vw, 56px)",
-                fontWeight: 800,
-                color: "#4b2e2b",
-                fontFamily: "var(--font-playfair)",
-                margin: 0,
-                lineHeight: 1.1,
-              }}
-            >
-              Featured Projects
-            </h2>
-          </div>
-          <div style={{ display: "flex", gap: 12 }}>
-            <button
-              onClick={() => scroll("left")}
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: "50%",
-                border: "2px solid #4b2e2b",
-                backgroundColor: "transparent",
-                color: "#4b2e2b",
-                fontSize: 18,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {"<"}
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: "50%",
-                border: "2px solid #4b2e2b",
-                backgroundColor: "#4b2e2b",
-                color: "#fff8f0",
-                fontSize: 18,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {">"}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        ref={scrollRef}
-        style={{
-          display: "flex",
-          gap: 20,
-          overflowX: "auto",
-          paddingLeft: 40,
-          paddingRight: 40,
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          paddingBottom: 20,
-        }}
-      >
-        {projects.map((project) => (
           <div
-            key={project.id}
             style={{
-              minWidth: 340,
-              height: 480,
-              borderRadius: 20,
-              overflow: "hidden",
-              position: "relative",
-              flexShrink: 0,
-              cursor: "pointer",
-              backgroundColor: "#2a1a18",
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
             }}
           >
-            {project.image && (
-              <img
-                src={project.image}
-                alt={project.title}
+            <div>
+              <div
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  opacity: 0.6,
-                }}
-              />
-            )}
-
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to top, rgba(75,46,43,0.98) 40%, rgba(75,46,43,0.2) 100%)",
-              }}
-            />
-
-            <div
-              style={{
-                position: "absolute",
-                top: 16,
-                left: 16,
-                right: 16,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <span
-                style={{
-                  backgroundColor: "rgba(255,248,240,0.15)",
-                  color: "#fff8f0",
-                  padding: "6px 14px",
-                  borderRadius: 20,
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: 1,
-                  fontFamily: "sans-serif",
-                  textTransform: "uppercase",
-                  border: "1px solid rgba(255,248,240,0.2)",
-                }}
-              >
-                {project.category}
-              </span>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  backgroundColor: "rgba(255,248,240,0.15)",
-                  color: "#fff8f0",
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  textDecoration: "none",
-                  fontSize: 16,
-                  border: "1px solid rgba(255,248,240,0.2)",
+                  gap: 12,
+                  marginBottom: 16,
                 }}
               >
-                {"↗"}
-              </a>
+                <div
+                  style={{ width: 40, height: 2, backgroundColor: "#c08552" }}
+                />
+                <span
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    letterSpacing: 3,
+                    textTransform: "uppercase",
+                    color: "#c08552",
+                    fontFamily: "sans-serif",
+                  }}
+                >
+                  My Work
+                </span>
+              </div>
+              <h2
+                style={{
+                  fontSize: "clamp(36px, 5vw, 56px)",
+                  fontWeight: 800,
+                  color: "#4b2e2b",
+                  fontFamily: "var(--font-playfair)",
+                  margin: 0,
+                  lineHeight: 1.1,
+                }}
+              >
+                Featured Projects
+              </h2>
             </div>
 
+            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+              <div
+                style={{
+                  fontFamily: "sans-serif",
+                  fontSize: 15,
+                  color: "#4b2e2b",
+                  letterSpacing: 2,
+                  fontWeight: 500,
+                  minWidth: 60,
+                  textAlign: "center",
+                }}
+              >
+                <span style={{ fontWeight: 800, fontSize: 18 }}>
+                  {pad(current + 1)}
+                </span>
+                <span style={{ color: "#c08552", margin: "0 4px" }}>/</span>
+                <span style={{ opacity: 0.5 }}>{pad(total)}</span>
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                <button
+                  onClick={() => goTo(current - 1)}
+                  disabled={current === 0}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    border: "2px solid #4b2e2b",
+                    backgroundColor: "transparent",
+                    color: "#4b2e2b",
+                    fontSize: 18,
+                    cursor: current === 0 ? "not-allowed" : "pointer",
+                    opacity: current === 0 ? 0.3 : 1,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "opacity 0.2s",
+                  }}
+                >
+                  {"←"}
+                </button>
+                <button
+                  onClick={() => goTo(current + 1)}
+                  disabled={current === total - 1}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    border: "2px solid #4b2e2b",
+                    backgroundColor: "#4b2e2b",
+                    color: "#fff8f0",
+                    fontSize: 18,
+                    cursor: current === total - 1 ? "not-allowed" : "pointer",
+                    opacity: current === total - 1 ? 0.3 : 1,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "opacity 0.2s",
+                  }}
+                >
+                  {"→"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          style={{
+            display: "flex",
+            gap: GAP,
+            overflowX: "auto",
+            paddingLeft: 40,
+            paddingRight: 40,
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            paddingBottom: 20,
+          }}
+        >
+          {projects.map((project, i) => {
+            const isHovered = hoveredId === project.id;
+            return (
+              <div
+                key={project.id}
+                ref={(el) => (cardRefs.current[i] = el)}
+                onMouseEnter={() => setHoveredId(project.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                style={{
+                  minWidth: CARD_WIDTH,
+                  height: 400,
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  position: "relative",
+                  flexShrink: 0,
+                  cursor: "pointer",
+                  backgroundColor: "#2a1a18",
+                  opacity: visible[i] ? 1 : 0,
+                  animation: visible[i]
+                    ? "cardIn 0.6s cubic-bezier(0.22,1,0.36,1) both"
+                    : "none",
+                  transform: isHovered
+                    ? "translateY(-8px) scale(1.02)"
+                    : "translateY(0) scale(1)",
+                  transition:
+                    "transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease",
+                  boxShadow: isHovered
+                    ? "0 24px 48px rgba(75,46,43,0.3), 0 0 0 1px rgba(192,133,82,0.4)"
+                    : "0 4px 20px rgba(75,46,43,0.12)",
+                }}
+              >
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      opacity: isHovered ? 0.75 : 0.55,
+                      transition: "opacity 0.4s ease",
+                    }}
+                  />
+                )}
+
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: isHovered
+                      ? "linear-gradient(to top, rgba(75,46,43,0.99) 45%, rgba(75,46,43,0.1) 100%)"
+                      : "linear-gradient(to top, rgba(75,46,43,0.98) 40%, rgba(75,46,43,0.2) 100%)",
+                    transition: "background 0.4s ease",
+                  }}
+                />
+
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span
+                    style={{
+                      backgroundColor: "rgba(255,248,240,0.15)",
+                      color: "#fff8f0",
+                      padding: "6px 14px",
+                      borderRadius: 20,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: 1,
+                      fontFamily: "sans-serif",
+                      textTransform: "uppercase",
+                      border: "1px solid rgba(255,248,240,0.2)",
+                    }}
+                  >
+                    {project.category}
+                  </span>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      backgroundColor: isHovered
+                        ? "rgba(192,133,82,0.9)"
+                        : "rgba(255,248,240,0.15)",
+                      color: "#fff8f0",
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textDecoration: "none",
+                      fontSize: 16,
+                      border: "1px solid rgba(255,248,240,0.2)",
+                      transition: "background 0.3s ease",
+                    }}
+                  >
+                    {"↗"}
+                  </a>
+                </div>
+
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: 22,
+                    transform: isHovered ? "translateY(0)" : "translateY(4px)",
+                    transition: "transform 0.35s ease",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 800,
+                      color: "#fff8f0",
+                      fontFamily: "var(--font-playfair)",
+                      margin: "0 0 8px",
+                    }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 12.5,
+                      color: "rgba(255,248,240,0.72)",
+                      fontFamily: "sans-serif",
+                      lineHeight: 1.6,
+                      margin: "0 0 14px",
+                    }}
+                  >
+                    {project.description}
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 600,
+                          color: "#c08552",
+                          backgroundColor: "rgba(192,133,82,0.15)",
+                          padding: "4px 10px",
+                          borderRadius: 20,
+                          fontFamily: "sans-serif",
+                          border: "1px solid rgba(192,133,82,0.3)",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <div
+            style={{
+              minWidth: 260,
+              height: 400,
+              borderRadius: 20,
+              flexShrink: 0,
+              backgroundColor: "#4b2e2b",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 20,
+              border: "2px solid rgba(192,133,82,0.3)",
+              padding: 32,
+            }}
+          >
             <div
               style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: 24,
+                width: 64,
+                height: 64,
+                borderRadius: 16,
+                backgroundColor: "rgba(192,133,82,0.15)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 28,
+                border: "1px solid rgba(192,133,82,0.3)",
               }}
             >
+              🐙
+            </div>
+            <div style={{ textAlign: "center" }}>
               <h3
                 style={{
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: 800,
                   color: "#fff8f0",
                   fontFamily: "var(--font-playfair)",
                   margin: "0 0 10px",
                 }}
               >
-                {project.title}
+                View All Projects
               </h3>
               <p
                 style={{
                   fontSize: 13,
-                  color: "rgba(255,248,240,0.7)",
+                  color: "rgba(255,248,240,0.6)",
                   fontFamily: "sans-serif",
                   lineHeight: 1.6,
-                  margin: "0 0 16px",
+                  margin: "0 0 22px",
                 }}
               >
-                {project.description}
+                Explore more of my work and open-source contributions on GitHub
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 600,
-                      color: "#c08552",
-                      backgroundColor: "rgba(192,133,82,0.15)",
-                      padding: "4px 10px",
-                      borderRadius: 20,
-                      fontFamily: "sans-serif",
-                      border: "1px solid rgba(192,133,82,0.3)",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <a
+                href="https://github.com/wiissal"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "11px 26px",
+                  backgroundColor: "#c08552",
+                  color: "#fff8f0",
+                  borderRadius: 50,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  fontFamily: "sans-serif",
+                  letterSpacing: 1,
+                }}
+              >
+                Visit GitHub
+              </a>
             </div>
           </div>
-        ))}
-
-        <div
-          style={{
-            minWidth: 300,
-            height: 480,
-            borderRadius: 20,
-            flexShrink: 0,
-            backgroundColor: "#4b2e2b",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 20,
-            border: "2px solid rgba(192,133,82,0.3)",
-            padding: 32,
-          }}
-        >
-          <div
-            style={{
-              width: 72,
-              height: 72,
-              borderRadius: 16,
-              backgroundColor: "rgba(192,133,82,0.15)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 32,
-              border: "1px solid rgba(192,133,82,0.3)",
-            }}
-          >
-            🐙
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <h3
-              style={{
-                fontSize: 24,
-                fontWeight: 800,
-                color: "#fff8f0",
-                fontFamily: "var(--font-playfair)",
-                margin: "0 0 12px",
-              }}
-            >
-              View All Projects
-            </h3>
-            <p
-              style={{
-                fontSize: 14,
-                color: "rgba(255,248,240,0.6)",
-                fontFamily: "sans-serif",
-                lineHeight: 1.6,
-                margin: "0 0 24px",
-              }}
-            >
-              Explore more of my work and open-source contributions on GitHub
-            </p>
-            <a
-              href="https://github.com/wiissal"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "12px 28px",
-                backgroundColor: "#c08552",
-                color: "#fff8f0",
-                borderRadius: 50,
-                fontSize: 13,
-                fontWeight: 600,
-                textDecoration: "none",
-                fontFamily: "sans-serif",
-                letterSpacing: 1,
-              }}
-            >
-              Visit GitHub
-            </a>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

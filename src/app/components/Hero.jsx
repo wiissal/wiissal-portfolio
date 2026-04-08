@@ -107,15 +107,21 @@ export default function Hero() {
             margin: 0,
           }}
         >
-          Wissal Ouboujemaa , I am a Fullstack & Mobile Developer based in Morocco 🇲🇦
-          building clean, performant web and mobile apps that create real
-          impact in your businesses and your daily lives.
+          Wissal Ouboujemaa , I am a Fullstack & Mobile Developer based in
+          Morocco 🇲🇦 building clean, performant web and mobile apps that create
+          real impact in your businesses and your daily lives.
         </p>
 
         {/* CTA Buttons */}
         <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
           <motion.a
             href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              document
+                .getElementById("projects")
+                .scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{
