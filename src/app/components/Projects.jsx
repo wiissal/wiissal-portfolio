@@ -22,7 +22,7 @@ const projects = [
       "Mobile app for Gnawa music festival event booking in Agadir. Event discovery, ticket booking and cultural experience management.",
     tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
     github: "https://github.com/wiissal/grande-soiree-gnawa",
-    image: "/images/gnawa.jpg",
+    image: "/images/grande-soiree-gnawa.jpg",
   },
   {
     id: 3,
@@ -54,6 +54,15 @@ const projects = [
     github: "https://github.com/wiissal/CineTanger-app",
     image: "/images/cinetanger.jpg",
   },
+  {
+  id: 6,
+  title: "CAN 2026 API",
+  category: "Backend API",
+  description: "REST API for Africa Cup of Nations 2026 tournament management. Full CRUD for teams, players and matches with JWT auth, Bcrypt, Sequelize ORM and PostgreSQL.",
+  tags: ["Node.js", "Express", "PostgreSQL", "Sequelize", "JWT"],
+  github: "https://github.com/marouaneakrich/CAF-API-Management",
+  image: "/images/can-api.jpg",
+},
 ];
 
 const CARD_WIDTH = 320;
