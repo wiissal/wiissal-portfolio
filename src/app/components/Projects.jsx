@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
 
 const projects = [
   {
@@ -22,7 +23,7 @@ const projects = [
       "Mobile app for Gnawa music festival event booking in Agadir. Event discovery, ticket booking and cultural experience management.",
     tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
     github: "https://github.com/wiissal/grande-soiree-gnawa",
-    image: "/images/grande-soiree-gnawa.jpg",
+    image: "/images/gnawa.jpg",
   },
   {
     id: 3,
@@ -86,12 +87,12 @@ export default function Projects() {
           if (entry.isIntersecting) {
             setTimeout(
               () => setVisible((prev) => ({ ...prev, [i]: true })),
-              i * 120,
+              i * 100,
             );
             obs.disconnect();
           }
         },
-        { threshold: 0.15 },
+        { threshold: 0.1 },
       );
       obs.observe(el);
       observers.push(obs);
@@ -109,6 +110,31 @@ export default function Projects() {
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, [total]);
+
+  const handleMouseMove = (e, i) => {
+    const card = cardRefs.current[i];
+    if (!card || i !== current) return;
+    const r = card.getBoundingClientRect();
+    const xN = (e.clientX - r.left) / r.width - 0.5;
+    const yN = (e.clientY - r.top) / r.height - 0.5;
+    gsap.to(card, {
+      rotateY: xN * 14,
+      rotateX: -yN * 10,
+      transformPerspective: 1000,
+      ease: "power2.out",
+      duration: 0.4,
+    });
+  };
+
+  const handleMouseLeave = (i) => {
+    setHoveredId(null);
+    gsap.to(cardRefs.current[i], {
+      rotateY: 0,
+      rotateX: 0,
+      duration: 0.9,
+      ease: "elastic.out(1, 0.5)",
+    });
+  };
 
   return (
     <>
@@ -128,6 +154,7 @@ export default function Projects() {
           scrollMarginTop: "80px",
         }}
       >
+        {/* Header */}
         <div
           style={{
             maxWidth: 1200,
@@ -182,31 +209,54 @@ export default function Projects() {
               </h2>
             </div>
 
+            {/* Counter + progress */}
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
+                flexDirection: "column",
+                alignItems: "flex-end",
                 gap: 8,
-                paddingBottom: 8,
               }}
             >
-              {projects.map((_, i) => (
+              <div
+                style={{
+                  fontFamily: "sans-serif",
+                  fontSize: 15,
+                  color: "#4b2e2b",
+                  letterSpacing: 2,
+                }}
+              >
+                <span style={{ fontWeight: 800, fontSize: 20 }}>
+                  {String(current + 1).padStart(2, "0")}
+                </span>
+                <span style={{ color: "#c08552", margin: "0 4px" }}>/</span>
+                <span style={{ opacity: 0.4 }}>
+                  {String(total).padStart(2, "0")}
+                </span>
+              </div>
+              <div
+                style={{
+                  width: 100,
+                  height: 2,
+                  backgroundColor: "rgba(75,46,43,0.12)",
+                  borderRadius: 2,
+                }}
+              >
                 <div
-                  key={i}
                   style={{
-                    width: i === current ? 28 : 8,
-                    height: 8,
-                    borderRadius: 4,
-                    backgroundColor:
-                      i === current ? "#c08552" : "rgba(75,46,43,0.2)",
-                    transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
+                    height: "100%",
+                    borderRadius: 2,
+                    backgroundColor: "#c08552",
+                    width: `${((current + 1) / total) * 100}%`,
+                    transition: "width 0.5s cubic-bezier(0.22,1,0.36,1)",
                   }}
                 />
-              ))}
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Scroll hint */}
         <div
           style={{
             maxWidth: 1200,
@@ -218,7 +268,7 @@ export default function Projects() {
           <span
             style={{
               fontSize: 12,
-              color: "rgba(75,46,43,0.4)",
+              color: "rgba(75,46,43,0.35)",
               fontFamily: "sans-serif",
               letterSpacing: 1,
               display: "flex",
@@ -226,11 +276,11 @@ export default function Projects() {
               gap: 8,
             }}
           >
-            <span style={{ fontSize: 16 }}>{"⟵"}</span> scroll to explore{" "}
-            <span style={{ fontSize: 16 }}>{"⟶"}</span>
+            <span>{"⟵"}</span> scroll to explore <span>{"⟶"}</span>
           </span>
         </div>
 
+        {/* Cards */}
         <div
           ref={scrollRef}
           className="projects-track"
@@ -245,6 +295,7 @@ export default function Projects() {
             msOverflowStyle: "none",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
+            alignItems: "center",
           }}
         >
           {projects.map((project, i) => {
@@ -255,32 +306,32 @@ export default function Projects() {
                 key={project.id}
                 ref={(el) => (cardRefs.current[i] = el)}
                 onMouseEnter={() => setHoveredId(project.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                onMouseLeave={() => handleMouseLeave(i)}
+                onMouseMove={(e) => handleMouseMove(e, i)}
                 style={{
                   minWidth: CARD_WIDTH,
-                  height: isActive ? 430 : 390,
-                  borderRadius: 20,
+                  height: isActive ? 440 : 380,
+                  borderRadius: 22,
                   overflow: "hidden",
                   position: "relative",
                   flexShrink: 0,
-                  cursor: "grab",
-                  backgroundColor: "#2a1a18",
+                  cursor: isActive ? "grab" : "pointer",
+                  backgroundColor: "#1a0e0c",
                   scrollSnapAlign: "start",
                   opacity: visible[i] ? 1 : 0,
                   animation: visible[i]
                     ? "cardIn 0.6s cubic-bezier(0.22,1,0.36,1) both"
                     : "none",
-                  transform: isHovered
-                    ? "translateY(-10px) scale(1.02)"
-                    : isActive
-                      ? "translateY(0) scale(1)"
-                      : "translateY(14px) scale(0.94)",
+                  transform: isActive
+                    ? "translateY(0) scale(1)"
+                    : "translateY(16px) scale(0.92)",
                   transition:
                     "transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease, height 0.5s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease",
                   boxShadow: isActive
-                    ? "0 32px 64px rgba(75,46,43,0.35), 0 0 0 1px rgba(192,133,82,0.5)"
-                    : "0 4px 16px rgba(75,46,43,0.08)",
-                  filter: isActive ? "none" : "brightness(0.65) saturate(0.8)",
+                    ? "0 40px 80px rgba(75,46,43,0.4), 0 0 0 1px rgba(192,133,82,0.4)"
+                    : "0 4px 20px rgba(75,46,43,0.08)",
+                  filter: isActive ? "none" : "brightness(0.55) saturate(0.65)",
+                  transformStyle: "preserve-3d",
                 }}
               >
                 {project.image && (
@@ -291,8 +342,9 @@ export default function Projects() {
                     style={{
                       objectFit: "cover",
                       objectPosition: "center",
-                      opacity: isHovered ? 1 : isActive ? 0.85 : 0.65,
-                      transition: "opacity 0.5s ease",
+                      opacity: isHovered ? 0.95 : isActive ? 0.85 : 0.65,
+                      transition: "opacity 0.5s ease, transform 0.6s ease",
+                      transform: isHovered ? "scale(1.06)" : "scale(1)",
                     }}
                   />
                 )}
@@ -301,12 +353,51 @@ export default function Projects() {
                   style={{
                     position: "absolute",
                     inset: 0,
-                    background: isActive
-                      ? "linear-gradient(to top, rgba(75,46,43,0.95) 35%, rgba(75,46,43,0.0) 100%)"
-                      : "linear-gradient(to top, rgba(75,46,43,0.88) 40%, rgba(75,46,43,0.05) 100%)",
-                    transition: "background 0.5s ease",
+                    background:
+                      "linear-gradient(to top, rgba(20,8,6,0.98) 28%, rgba(20,8,6,0.25) 65%, rgba(20,8,6,0.0) 100%)",
+                    transition: "background 0.4s ease",
                   }}
                 />
+
+                {/* Hover center CTA */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: isHovered && isActive ? 1 : 0,
+                    transition: "opacity 0.3s ease",
+                    zIndex: 10,
+                  }}
+                >
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "12px 26px",
+                      backgroundColor: "#c08552",
+                      color: "#fff8f0",
+                      borderRadius: 50,
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textDecoration: "none",
+                      fontFamily: "sans-serif",
+                      letterSpacing: 2,
+                      textTransform: "uppercase",
+                      boxShadow: "0 8px 28px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    View on GitHub {"↗"}
+                  </a>
+                </div>
+
+                {/* Active top accent */}
                 {isActive && (
                   <div
                     style={{
@@ -316,18 +407,19 @@ export default function Projects() {
                       right: 0,
                       height: 3,
                       background:
-                        "linear-gradient(to right, #c08552, rgba(192,133,82,0.2))",
-                      borderRadius: "20px 20px 0 0",
+                        "linear-gradient(to right, #c08552, rgba(192,133,82,0.1))",
+                      borderRadius: "22px 22px 0 0",
                     }}
                   />
                 )}
 
+                {/* Top row */}
                 <div
                   style={{
                     position: "absolute",
-                    top: 16,
-                    left: 16,
-                    right: 16,
+                    top: 18,
+                    left: 18,
+                    right: 18,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -335,69 +427,63 @@ export default function Projects() {
                 >
                   <span
                     style={{
-                      backgroundColor: isActive
-                        ? "rgba(192,133,82,0.25)"
-                        : "rgba(255,248,240,0.1)",
-                      color: "#fff8f0",
-                      padding: "6px 14px",
+                      backgroundColor: "rgba(192,133,82,0.2)",
+                      color: "#c08552",
+                      padding: "5px 13px",
                       borderRadius: 20,
-                      fontSize: 11,
-                      fontWeight: 600,
-                      letterSpacing: 1,
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: 1.5,
                       fontFamily: "sans-serif",
                       textTransform: "uppercase",
-                      border: isActive
-                        ? "1px solid rgba(192,133,82,0.5)"
-                        : "1px solid rgba(255,248,240,0.15)",
-                      transition: "all 0.4s ease",
+                      border: "1px solid rgba(192,133,82,0.4)",
                     }}
                   >
                     {project.category}
                   </span>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      backgroundColor: isHovered
-                        ? "rgba(192,133,82,0.9)"
-                        : "rgba(255,248,240,0.15)",
-                      color: "#fff8f0",
-                      width: 36,
-                      height: 36,
-                      borderRadius: "50%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      textDecoration: "none",
-                      fontSize: 16,
-                      border: "1px solid rgba(255,248,240,0.2)",
-                      transition: "background 0.3s ease",
-                    }}
-                  >
-                    {"↗"}
-                  </a>
+                  {isActive && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        backgroundColor: "rgba(255,248,240,0.12)",
+                        color: "#fff8f0",
+                        width: 36,
+                        height: 36,
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        border: "1px solid rgba(255,248,240,0.15)",
+                        transition: "background 0.3s ease",
+                      }}
+                    >
+                      {"↗"}
+                    </a>
+                  )}
                 </div>
 
+                {/* Bottom content */}
                 <div
                   style={{
                     position: "absolute",
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    padding: 22,
-                    transform: isActive ? "translateY(0)" : "translateY(6px)",
-                    transition: "transform 0.5s ease",
-                    opacity: isActive ? 1 : 0.5,
+                    padding: "24px 22px",
                   }}
                 >
                   <h3
                     style={{
-                      fontSize: isActive ? 22 : 18,
+                      fontSize: isActive ? 26 : 20,
                       fontWeight: 800,
                       color: "#fff8f0",
                       fontFamily: "var(--font-playfair)",
                       margin: "0 0 8px",
+                      lineHeight: 1.2,
                       transition: "font-size 0.4s ease",
                     }}
                   >
@@ -406,15 +492,15 @@ export default function Projects() {
                   <p
                     style={{
                       fontSize: 12.5,
-                      color: "rgba(255,248,240,0.72)",
+                      color: "rgba(255,248,240,0.65)",
                       fontFamily: "sans-serif",
                       lineHeight: 1.6,
                       margin: "0 0 14px",
                       maxHeight: isActive ? 80 : 0,
                       overflow: "hidden",
+                      opacity: isActive ? 1 : 0,
                       transition:
                         "max-height 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease",
-                      opacity: isActive ? 1 : 0,
                     }}
                   >
                     {project.description}
@@ -424,14 +510,14 @@ export default function Projects() {
                       <span
                         key={tag}
                         style={{
-                          fontSize: 11,
+                          fontSize: 10,
                           fontWeight: 600,
-                          color: "#c08552",
-                          backgroundColor: "rgba(192,133,82,0.15)",
+                          color: "rgba(255,248,240,0.7)",
+                          backgroundColor: "rgba(255,248,240,0.07)",
                           padding: "4px 10px",
                           borderRadius: 20,
                           fontFamily: "sans-serif",
-                          border: "1px solid rgba(192,133,82,0.3)",
+                          border: "1px solid rgba(255,248,240,0.12)",
                         }}
                       >
                         {tag}
@@ -443,23 +529,24 @@ export default function Projects() {
             );
           })}
 
+          {/* View All card */}
           <div
             style={{
               minWidth: 260,
-              height: 390,
-              borderRadius: 20,
+              height: 380,
+              borderRadius: 22,
               flexShrink: 0,
-              backgroundColor: "#4b2e2b",
+              backgroundColor: "#1a0e0c",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
               gap: 20,
-              border: "2px solid rgba(192,133,82,0.3)",
+              border: "1px solid rgba(192,133,82,0.2)",
               padding: 32,
               scrollSnapAlign: "start",
-              transform: "translateY(14px) scale(0.94)",
-              filter: "brightness(0.85)",
+              transform: "translateY(16px) scale(0.92)",
+              filter: "brightness(0.75)",
             }}
           >
             <div
@@ -467,12 +554,12 @@ export default function Projects() {
                 width: 64,
                 height: 64,
                 borderRadius: 16,
-                backgroundColor: "rgba(192,133,82,0.15)",
+                backgroundColor: "rgba(192,133,82,0.1)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 28,
-                border: "1px solid rgba(192,133,82,0.3)",
+                border: "1px solid rgba(192,133,82,0.2)",
               }}
             >
               🐙
@@ -480,7 +567,7 @@ export default function Projects() {
             <div style={{ textAlign: "center" }}>
               <h3
                 style={{
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: 800,
                   color: "#fff8f0",
                   fontFamily: "var(--font-playfair)",
@@ -491,14 +578,14 @@ export default function Projects() {
               </h3>
               <p
                 style={{
-                  fontSize: 13,
-                  color: "rgba(255,248,240,0.6)",
+                  fontSize: 12,
+                  color: "rgba(255,248,240,0.4)",
                   fontFamily: "sans-serif",
                   lineHeight: 1.6,
                   margin: "0 0 22px",
                 }}
               >
-                Explore more of my work and open-source contributions on GitHub
+                Explore more of my work on GitHub
               </p>
               <a
                 href="https://github.com/wiissal"
@@ -512,17 +599,44 @@ export default function Projects() {
                   backgroundColor: "#c08552",
                   color: "#fff8f0",
                   borderRadius: 50,
-                  fontSize: 13,
-                  fontWeight: 600,
+                  fontSize: 11,
+                  fontWeight: 700,
                   textDecoration: "none",
                   fontFamily: "sans-serif",
-                  letterSpacing: 1,
+                  letterSpacing: 1.5,
+                  textTransform: "uppercase",
                 }}
               >
                 Visit GitHub
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Dots */}
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "16px auto 0",
+            padding: "0 40px",
+            display: "flex",
+            gap: 8,
+          }}
+        >
+          {projects.map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: i === current ? 28 : 8,
+                height: 8,
+                borderRadius: 4,
+                backgroundColor:
+                  i === current ? "#c08552" : "rgba(75,46,43,0.18)",
+                transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
+                cursor: "default",
+              }}
+            />
+          ))}
         </div>
       </section>
     </>
