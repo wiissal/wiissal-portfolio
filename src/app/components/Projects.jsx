@@ -55,14 +55,15 @@ const projects = [
     image: "/images/cinetanger.jpg",
   },
   {
-  id: 6,
-  title: "CAN 2026 API",
-  category: "Backend API",
-  description: "REST API for Africa Cup of Nations 2026 tournament management. Full CRUD for teams, players and matches with JWT auth, Bcrypt, Sequelize ORM and PostgreSQL.",
-  tags: ["Node.js", "Express", "PostgreSQL", "Sequelize", "JWT"],
-  github: "https://github.com/marouaneakrich/CAF-API-Management",
-  image: "/images/can-api.jpg",
-},
+    id: 6,
+    title: "CAN 2026 API",
+    category: "Backend API",
+    description:
+      "REST API for Africa Cup of Nations 2026 tournament management. Full CRUD for teams, players and matches with JWT auth, Bcrypt, Sequelize ORM and PostgreSQL.",
+    tags: ["Node.js", "Express", "PostgreSQL", "Sequelize", "JWT"],
+    github: "https://github.com/marouaneakrich/CAF-API-Management",
+    image: "/images/can-api.jpg",
+  },
 ];
 
 const CARD_WIDTH = 320;
@@ -289,7 +290,8 @@ export default function Projects() {
                     fill
                     style={{
                       objectFit: "cover",
-                      opacity: isHovered ? 0.8 : isActive ? 0.65 : 0.4,
+                      objectPosition: "center",
+                      opacity: isHovered ? 1 : isActive ? 0.85 : 0.65,
                       transition: "opacity 0.5s ease",
                     }}
                   />
@@ -300,12 +302,11 @@ export default function Projects() {
                     position: "absolute",
                     inset: 0,
                     background: isActive
-                      ? "linear-gradient(to top, rgba(75,46,43,0.99) 45%, rgba(75,46,43,0.05) 100%)"
-                      : "linear-gradient(to top, rgba(75,46,43,0.99) 60%, rgba(75,46,43,0.5) 100%)",
+                      ? "linear-gradient(to top, rgba(75,46,43,0.95) 35%, rgba(75,46,43,0.0) 100%)"
+                      : "linear-gradient(to top, rgba(75,46,43,0.88) 40%, rgba(75,46,43,0.05) 100%)",
                     transition: "background 0.5s ease",
                   }}
                 />
-
                 {isActive && (
                   <div
                     style={{
