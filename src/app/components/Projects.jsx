@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -117,7 +118,6 @@ export default function Projects() {
           scrollMarginTop: "80px",
         }}
       >
-        {/* Header */}
         <div
           style={{
             maxWidth: 1200,
@@ -172,7 +172,6 @@ export default function Projects() {
               </h2>
             </div>
 
-            {/* Dot indicators */}
             <div
               style={{
                 display: "flex",
@@ -191,7 +190,6 @@ export default function Projects() {
                     backgroundColor:
                       i === current ? "#c08552" : "rgba(75,46,43,0.2)",
                     transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
-                    cursor: "default",
                   }}
                 />
               ))}
@@ -199,7 +197,6 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Scroll hint */}
         <div
           style={{
             maxWidth: 1200,
@@ -219,12 +216,11 @@ export default function Projects() {
               gap: 8,
             }}
           >
-            <span style={{ fontSize: 16 }}>⟵</span> scroll to explore{" "}
-            <span style={{ fontSize: 16 }}>⟶</span>
+            <span style={{ fontSize: 16 }}>{"⟵"}</span> scroll to explore{" "}
+            <span style={{ fontSize: 16 }}>{"⟶"}</span>
           </span>
         </div>
 
-        {/* Cards track */}
         <div
           ref={scrollRef}
           className="projects-track"
@@ -278,14 +274,11 @@ export default function Projects() {
                 }}
               >
                 {project.image && (
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    fill
                     style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
                       objectFit: "cover",
                       opacity: isHovered ? 0.8 : isActive ? 0.65 : 0.4,
                       transition: "opacity 0.5s ease",
@@ -304,7 +297,6 @@ export default function Projects() {
                   }}
                 />
 
-                {/* Active top accent */}
                 {isActive && (
                   <div
                     style={{
@@ -441,7 +433,6 @@ export default function Projects() {
             );
           })}
 
-          {/* View All card */}
           <div
             style={{
               minWidth: 260,
