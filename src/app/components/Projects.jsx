@@ -189,6 +189,14 @@ export default function Projects() {
               href="https://github.com/wiissal"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#4b2e2b";
+                e.currentTarget.style.color = "#fff8f0";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = "#4b2e2b";
+              }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -196,6 +204,7 @@ export default function Projects() {
                 padding: "12px 28px",
                 border: "2px solid #4b2e2b",
                 color: "#4b2e2b",
+                backgroundColor: "transparent",
                 borderRadius: 50,
                 fontSize: 12,
                 fontWeight: 700,
