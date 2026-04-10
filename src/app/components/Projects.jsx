@@ -3,6 +3,9 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -42,7 +45,7 @@ const projects = [
     description:
       "Tourism discovery platform for Beni Mellal region showcasing local attractions, culture and travel experiences.",
     tags: ["JavaScript", "HTML", "CSS"],
-    github: "https://github.com/medool421/beni-mellal-tourism",
+    github: "https://github.com/medood421/beni-mellal-tourism",
     image: "/images/beni-mellal.jpg",
   },
   {
@@ -67,271 +70,171 @@ const projects = [
   },
 ];
 
-const CARD_WIDTH = 320;
-const GAP = 24;
-
 export default function Projects() {
-  const scrollRef = useRef(null);
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
   const cardRefs = useRef([]);
-  const [current, setCurrent] = useState(0);
   const [hoveredId, setHoveredId] = useState(null);
-  const [visible, setVisible] = useState({});
-  const total = projects.length;
 
   useEffect(() => {
-    const observers = [];
-    cardRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setTimeout(
-              () => setVisible((prev) => ({ ...prev, [i]: true })),
-              i * 100,
-            );
-            obs.disconnect();
-          }
+    const ctx = gsap.context(() => {
+      // heading line animation
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: { trigger: headingRef.current, start: "top 85%" },
         },
-        { threshold: 0.1 },
       );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
+
+      // staggered card entrance
+      gsap.fromTo(
+        cardRefs.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: { trigger: cardRefs.current[0], start: "top 85%" },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const index = Math.round(el.scrollLeft / (CARD_WIDTH + GAP));
-      setCurrent(Math.min(index, total - 1));
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [total]);
-
-  const handleMouseMove = (e, i) => {
-    const card = cardRefs.current[i];
-    if (!card || i !== current) return;
-    const r = card.getBoundingClientRect();
-    const xN = (e.clientX - r.left) / r.width - 0.5;
-    const yN = (e.clientY - r.top) / r.height - 0.5;
-    gsap.to(card, {
-      rotateY: xN * 14,
-      rotateX: -yN * 10,
-      transformPerspective: 1000,
+  const handleMouseEnter = (id, i) => {
+    setHoveredId(id);
+    gsap.to(cardRefs.current[i], {
+      y: -8,
+      duration: 0.35,
       ease: "power2.out",
-      duration: 0.4,
+      boxShadow: "0 24px 48px rgba(75,46,43,0.2)",
     });
   };
 
   const handleMouseLeave = (i) => {
     setHoveredId(null);
     gsap.to(cardRefs.current[i], {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.9,
-      ease: "elastic.out(1, 0.5)",
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      boxShadow: "0 4px 20px rgba(75,46,43,0.08)",
     });
   };
 
   return (
-    <>
-      <style>{`
-        @keyframes cardIn {
-          from { opacity: 0; transform: translateY(50px) scale(0.95); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .projects-track::-webkit-scrollbar { display: none; }
-      `}</style>
-
-      <section
-        id="projects"
-        style={{
-          backgroundColor: "#fff8f0",
-          padding: "100px 0",
-          scrollMarginTop: "80px",
-        }}
-      >
+    <section
+      ref={sectionRef}
+      id="projects"
+      style={{
+        backgroundColor: "#fff8f0",
+        padding: "100px 0",
+        scrollMarginTop: "80px",
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         {/* Header */}
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "0 40px",
-            marginBottom: 50,
-          }}
-        >
+        <div ref={headingRef} style={{ marginBottom: 60 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              marginBottom: 16,
+            }}
+          >
+            <div style={{ width: 40, height: 2, backgroundColor: "#c08552" }} />
+            <span
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "#c08552",
+                fontFamily: "sans-serif",
+              }}
+            >
+              My Work
+            </span>
+          </div>
           <div
             style={{
               display: "flex",
               alignItems: "flex-end",
               justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: 20,
             }}
           >
-            <div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  marginBottom: 16,
-                }}
-              >
-                <div
-                  style={{ width: 40, height: 2, backgroundColor: "#c08552" }}
-                />
-                <span
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 600,
-                    letterSpacing: 3,
-                    textTransform: "uppercase",
-                    color: "#c08552",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  My Work
-                </span>
-              </div>
-              <h2
-                style={{
-                  fontSize: "clamp(36px, 5vw, 56px)",
-                  fontWeight: 800,
-                  color: "#4b2e2b",
-                  fontFamily: "var(--font-playfair)",
-                  margin: 0,
-                  lineHeight: 1.1,
-                }}
-              >
-                Featured Projects
-              </h2>
-            </div>
-
-            {/* Counter + progress */}
-            <div
+            <h2
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
-                gap: 8,
+                fontSize: "clamp(36px, 5vw, 56px)",
+                fontWeight: 800,
+                color: "#4b2e2b",
+                fontFamily: "var(--font-playfair)",
+                margin: 0,
+                lineHeight: 1.1,
               }}
             >
-              <div
-                style={{
-                  fontFamily: "sans-serif",
-                  fontSize: 15,
-                  color: "#4b2e2b",
-                  letterSpacing: 2,
-                }}
-              >
-                <span style={{ fontWeight: 800, fontSize: 20 }}>
-                  {String(current + 1).padStart(2, "0")}
-                </span>
-                <span style={{ color: "#c08552", margin: "0 4px" }}>/</span>
-                <span style={{ opacity: 0.4 }}>
-                  {String(total).padStart(2, "0")}
-                </span>
-              </div>
-              <div
-                style={{
-                  width: 100,
-                  height: 2,
-                  backgroundColor: "rgba(75,46,43,0.12)",
-                  borderRadius: 2,
-                }}
-              >
-                <div
-                  style={{
-                    height: "100%",
-                    borderRadius: 2,
-                    backgroundColor: "#c08552",
-                    width: `${((current + 1) / total) * 100}%`,
-                    transition: "width 0.5s cubic-bezier(0.22,1,0.36,1)",
-                  }}
-                />
-              </div>
-            </div>
+              Featured Projects
+            </h2>
+            <a
+              href="https://github.com/wiissal"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "12px 28px",
+                border: "2px solid #4b2e2b",
+                color: "#4b2e2b",
+                borderRadius: 50,
+                fontSize: 12,
+                fontWeight: 700,
+                textDecoration: "none",
+                fontFamily: "sans-serif",
+                letterSpacing: 1.5,
+                textTransform: "uppercase",
+                transition: "all 0.3s ease",
+              }}
+            >
+               View All on GitHub
+            </a>
           </div>
         </div>
 
-        {/* Scroll hint */}
+        {/* Grid */}
         <div
           style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "0 40px",
-            marginBottom: 24,
-          }}
-        >
-          <span
-            style={{
-              fontSize: 12,
-              color: "rgba(75,46,43,0.35)",
-              fontFamily: "sans-serif",
-              letterSpacing: 1,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            <span>{"⟵"}</span> scroll to explore <span>{"⟶"}</span>
-          </span>
-        </div>
-
-        {/* Cards */}
-        <div
-          ref={scrollRef}
-          className="projects-track"
-          style={{
-            display: "flex",
-            gap: GAP,
-            overflowX: "auto",
-            paddingLeft: 40,
-            paddingRight: 40,
-            paddingBottom: 32,
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-            alignItems: "center",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: 24,
           }}
         >
           {projects.map((project, i) => {
-            const isActive = current === i;
             const isHovered = hoveredId === project.id;
             return (
               <div
                 key={project.id}
                 ref={(el) => (cardRefs.current[i] = el)}
-                onMouseEnter={() => setHoveredId(project.id)}
+                onMouseEnter={() => handleMouseEnter(project.id, i)}
                 onMouseLeave={() => handleMouseLeave(i)}
-                onMouseMove={(e) => handleMouseMove(e, i)}
                 style={{
-                  minWidth: CARD_WIDTH,
-                  height: isActive ? 440 : 380,
-                  borderRadius: 22,
+                  borderRadius: 20,
                   overflow: "hidden",
                   position: "relative",
-                  flexShrink: 0,
-                  cursor: isActive ? "grab" : "pointer",
                   backgroundColor: "#1a0e0c",
-                  scrollSnapAlign: "start",
-                  opacity: visible[i] ? 1 : 0,
-                  animation: visible[i]
-                    ? "cardIn 0.6s cubic-bezier(0.22,1,0.36,1) both"
-                    : "none",
-                  transform: isActive
-                    ? "translateY(0) scale(1)"
-                    : "translateY(16px) scale(0.92)",
-                  transition:
-                    "transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease, height 0.5s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease",
-                  boxShadow: isActive
-                    ? "0 40px 80px rgba(75,46,43,0.4), 0 0 0 1px rgba(192,133,82,0.4)"
-                    : "0 4px 20px rgba(75,46,43,0.08)",
-                  filter: isActive ? "none" : "brightness(0.2) saturate(0.55)",
-                  transformStyle: "preserve-3d",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 20px rgba(75,46,43,0.08)",
+                  height: 380,
                 }}
               >
                 {project.image && (
@@ -342,75 +245,22 @@ export default function Projects() {
                     style={{
                       objectFit: "cover",
                       objectPosition: "center",
-                      opacity: isHovered ? 1 : isActive ? 0.9 : 0.85,
-                      transform: isHovered ? "scale(1.06)" : "scale(1)",
+                      opacity: isHovered ? 0.95 : 0.82,
+                      transition: "opacity 0.4s ease, transform 0.5s ease",
+                      transform: isHovered ? "scale(1.04)" : "scale(1)",
                     }}
                   />
                 )}
 
+                {/* Gradient */}
                 <div
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(to top, rgba(20,8,6,0.98) 28%, rgba(20,8,6,0.25) 65%, rgba(20,8,6,0.0) 100%)",
-                    transition: "background 0.4s ease",
+                      "linear-gradient(to top, rgba(20,8,6,0.97) 30%, rgba(20,8,6,0.2) 70%, rgba(20,8,6,0.0) 100%)",
                   }}
                 />
-
-                {/* Hover center CTA */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    opacity: isHovered && isActive ? 1 : 0,
-                    transition: "opacity 0.3s ease",
-                    zIndex: 10,
-                  }}
-                >
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "12px 26px",
-                      backgroundColor: "#c08552",
-                      color: "#fff8f0",
-                      borderRadius: 50,
-                      fontSize: 11,
-                      fontWeight: 700,
-                      textDecoration: "none",
-                      fontFamily: "sans-serif",
-                      letterSpacing: 2,
-                      textTransform: "uppercase",
-                      boxShadow: "0 8px 28px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    View on GitHub {"↗"}
-                  </a>
-                </div>
-
-                {/* Active top accent */}
-                {isActive && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: 3,
-                      background:
-                        "linear-gradient(to right, #c08552, rgba(192,133,82,0.1))",
-                      borderRadius: "22px 22px 0 0",
-                    }}
-                  />
-                )}
 
                 {/* Top row */}
                 <div
@@ -440,29 +290,29 @@ export default function Projects() {
                   >
                     {project.category}
                   </span>
-                  {isActive && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        backgroundColor: "rgba(255,248,240,0.12)",
-                        color: "#fff8f0",
-                        width: 36,
-                        height: 36,
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textDecoration: "none",
-                        fontSize: 16,
-                        border: "1px solid rgba(255,248,240,0.15)",
-                        transition: "background 0.3s ease",
-                      }}
-                    >
-                      {"↗"}
-                    </a>
-                  )}
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      backgroundColor: isHovered
+                        ? "#c08552"
+                        : "rgba(255,248,240,0.12)",
+                      color: "#fff8f0",
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textDecoration: "none",
+                      fontSize: 15,
+                      border: "1px solid rgba(255,248,240,0.15)",
+                      transition: "background 0.3s ease",
+                    }}
+                  >
+                    {"↗"}
+                  </a>
                 </div>
 
                 {/* Bottom content */}
@@ -477,13 +327,12 @@ export default function Projects() {
                 >
                   <h3
                     style={{
-                      fontSize: isActive ? 26 : 20,
+                      fontSize: 22,
                       fontWeight: 800,
                       color: "#fff8f0",
                       fontFamily: "var(--font-playfair)",
                       margin: "0 0 8px",
                       lineHeight: 1.2,
-                      transition: "font-size 0.4s ease",
                     }}
                   >
                     {project.title}
@@ -495,11 +344,6 @@ export default function Projects() {
                       fontFamily: "sans-serif",
                       lineHeight: 1.6,
                       margin: "0 0 14px",
-                      maxHeight: isActive ? 80 : 0,
-                      overflow: "hidden",
-                      opacity: isActive ? 1 : 0,
-                      transition:
-                        "max-height 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease",
                     }}
                   >
                     {project.description}
@@ -527,117 +371,8 @@ export default function Projects() {
               </div>
             );
           })}
-
-          {/* View All card */}
-          <div
-            style={{
-              minWidth: 260,
-              height: 380,
-              borderRadius: 22,
-              flexShrink: 0,
-              backgroundColor: "#1a0e0c",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 20,
-              border: "1px solid rgba(192,133,82,0.2)",
-              padding: 32,
-              scrollSnapAlign: "start",
-              transform: "translateY(16px) scale(0.92)",
-              filter: "brightness(0.75)",
-            }}
-          >
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 16,
-                backgroundColor: "rgba(192,133,82,0.1)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 28,
-                border: "1px solid rgba(192,133,82,0.2)",
-              }}
-            >
-              🐙
-            </div>
-            <div style={{ textAlign: "center" }}>
-              <h3
-                style={{
-                  fontSize: 20,
-                  fontWeight: 800,
-                  color: "#fff8f0",
-                  fontFamily: "var(--font-playfair)",
-                  margin: "0 0 10px",
-                }}
-              >
-                View All Projects
-              </h3>
-              <p
-                style={{
-                  fontSize: 12,
-                  color: "rgba(255,248,240,0.4)",
-                  fontFamily: "sans-serif",
-                  lineHeight: 1.6,
-                  margin: "0 0 22px",
-                }}
-              >
-                Explore more of my work on GitHub
-              </p>
-              <a
-                href="https://github.com/wiissal"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "11px 26px",
-                  backgroundColor: "#c08552",
-                  color: "#fff8f0",
-                  borderRadius: 50,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                  letterSpacing: 1.5,
-                  textTransform: "uppercase",
-                }}
-              >
-                Visit GitHub
-              </a>
-            </div>
-          </div>
         </div>
-
-        {/* Dots */}
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "16px auto 0",
-            padding: "0 40px",
-            display: "flex",
-            gap: 8,
-          }}
-        >
-          {projects.map((_, i) => (
-            <div
-              key={i}
-              style={{
-                width: i === current ? 28 : 8,
-                height: 8,
-                borderRadius: 4,
-                backgroundColor:
-                  i === current ? "#c08552" : "rgba(75,46,43,0.18)",
-                transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
-                cursor: "default",
-              }}
-            />
-          ))}
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
