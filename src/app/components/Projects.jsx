@@ -26,7 +26,7 @@ const projects = [
       "Mobile app for Gnawa music festival event booking in Agadir. Event discovery, ticket booking and cultural experience management.",
     tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
     github: "https://github.com/wiissal/grande-soiree-gnawa",
-    image: "/images/gnawa.jpg",
+    image: "/images/grande-soiree-gnawa.jpg",
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ const projects = [
     description:
       "Cinema booking app for Tanger with EAS Build, Sentry monitoring, Turborepo monorepo and GitHub Actions CI/CD.",
     tags: ["React Native", "Expo", "Turborepo", "Sentry"],
-    github: "https://github.com/wiissal/CineTanger-app",
+    github: "https://github.com/wiissal/cinetanger-app",
     image: "/images/cinetanger.jpg",
   },
   {
