@@ -11,7 +11,7 @@ const projects = [
   {
     id: 1,
     title: "Take-a-Chef",
-    category: "Fullstack App",
+    category: "Fullstack",
     description:
       "Mobile platform connecting clients with private chefs for personalized dining experiences. JWT auth, real-time booking, chef discovery and review system.",
     tags: ["React Native", "Node.js", "PostgreSQL", "Zustand"],
@@ -21,7 +21,7 @@ const projects = [
   {
     id: 2,
     title: "Grande Soirée Gnawa",
-    category: "Fullstack App",
+    category: "Fullstack ",
     description:
       "Mobile app for Gnawa music festival event booking in Agadir. Event discovery, ticket booking and cultural experience management.",
     tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
@@ -51,7 +51,7 @@ const projects = [
   {
     id: 5,
     title: "CinéTanger",
-    category: "Mobile App",
+    category: "Mobile",
     description:
       "Cinema booking app for Tanger with EAS Build, Sentry monitoring, Turborepo monorepo and GitHub Actions CI/CD.",
     tags: ["React Native", "Expo", "Turborepo", "Sentry"],
@@ -61,7 +61,7 @@ const projects = [
   {
     id: 6,
     title: "CAN 2026 API",
-    category: "Backend API",
+    category: "Backend " ,
     description:
       "REST API for Africa Cup of Nations 2026 tournament management. Full CRUD for teams, players and matches with JWT auth, Bcrypt, Sequelize ORM and PostgreSQL.",
     tags: ["Node.js", "Express", "PostgreSQL", "Sequelize", "JWT"],
@@ -69,12 +69,15 @@ const projects = [
     image: "/images/can-api.jpg",
   },
 ];
+const filters = ["All", "Fullstack", "Frontend", "Mobile", "Backend"];
 
 export default function Projects() {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const cardRefs = useRef([]);
   const [hoveredId, setHoveredId] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [filtered, setFiltered] = useState(projects);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -126,6 +129,34 @@ export default function Projects() {
       duration: 0.5,
       ease: "power2.out",
       boxShadow: "0 4px 20px rgba(75,46,43,0.08)",
+    });
+  };
+  const handleFilter = (filter) => {
+    setActiveFilter(filter);
+    const next =
+      filter === "All"
+        ? projects
+        : projects.filter((p) => p.category === filter);
+    const cards = cardRefs.current.filter(Boolean);
+    gsap.to(cards, {
+      opacity: 0,
+      y: 20,
+      duration: 0.25,
+      ease: "power2.in",
+      onComplete: () => {
+        setFiltered(next);
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: "power3.out",
+            stagger: 0.08,
+          },
+        );
+      },
     });
   };
 
@@ -219,7 +250,42 @@ export default function Projects() {
             </a>
           </div>
         </div>
-
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            flexWrap: "wrap",
+            marginBottom: 40,
+          }}
+        >
+          {filters.map((filter) => {
+            const isActive = activeFilter === filter;
+            return (
+              <button
+                key={filter}
+                onClick={() => handleFilter(filter)}
+                style={{
+                  padding: "8px 22px",
+                  borderRadius: 50,
+                  border: isActive
+                    ? "2px solid #c08552"
+                    : "2px solid rgba(75,46,43,0.2)",
+                  backgroundColor: isActive ? "#c08552" : "transparent",
+                  color: isActive ? "#fff8f0" : "rgba(75,46,43,0.6)",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  fontFamily: "sans-serif",
+                  letterSpacing: 1.5,
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                {filter}
+              </button>
+            );
+          })}
+        </div>
         {/* Grid */}
         <div
           style={{
@@ -228,7 +294,7 @@ export default function Projects() {
             gap: 24,
           }}
         >
-          {projects.map((project, i) => {
+          {filtered.map((project, i) => {
             const isHovered = hoveredId === project.id;
             return (
               <div
