@@ -21,7 +21,7 @@ const projects = [
   {
     id: 2,
     title: "Grande Soirée Gnawa",
-    category: "Fullstack ",
+    category: "Fullstack",
     description:
       "Mobile app for Gnawa music festival event booking in Agadir. Event discovery, ticket booking and cultural experience management.",
     tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
@@ -61,7 +61,7 @@ const projects = [
   {
     id: 6,
     title: "CAN 2026 API",
-    category: "Backend " ,
+    category: "Backend" ,
     description:
       "REST API for Africa Cup of Nations 2026 tournament management. Full CRUD for teams, players and matches with JWT auth, Bcrypt, Sequelize ORM and PostgreSQL.",
     tags: ["Node.js", "Express", "PostgreSQL", "Sequelize", "JWT"],
