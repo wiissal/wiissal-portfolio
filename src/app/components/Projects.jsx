@@ -206,7 +206,7 @@ export default function Projects() {
                 transition: "all 0.3s ease",
               }}
             >
-               View All on GitHub
+              View All on GitHub
             </a>
           </div>
         </div>
@@ -276,7 +276,7 @@ export default function Projects() {
                 >
                   <span
                     style={{
-                      backgroundColor: "rgba(192,133,82,0.2)",
+                      backgroundColor: "rgba(20,8,6,0.75)",
                       color: "#c08552",
                       padding: "5px 13px",
                       borderRadius: 20,
@@ -285,7 +285,8 @@ export default function Projects() {
                       letterSpacing: 1.5,
                       fontFamily: "sans-serif",
                       textTransform: "uppercase",
-                      border: "1px solid rgba(192,133,82,0.4)",
+                      border: "1px solid rgba(192,133,82,0.5)",
+                      backdropFilter: "blur(6px)",
                     }}
                   >
                     {project.category}
