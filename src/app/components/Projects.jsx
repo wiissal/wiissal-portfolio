@@ -166,7 +166,7 @@ export default function Projects() {
       id="projects"
       style={{
         backgroundColor: "#fff8f0",
-        padding: "100px 0",
+        padding: "40px 0",
         scrollMarginTop: "80px",
       }}
     >
@@ -265,6 +265,7 @@ export default function Projects() {
                 key={filter}
                 onClick={() => handleFilter(filter)}
                 style={{
+                  marginTop: 4,
                   padding: "8px 22px",
                   borderRadius: 50,
                   border: isActive

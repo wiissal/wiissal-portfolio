@@ -87,7 +87,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="hero-stats" style={{ display: "flex", gap: 48, marginTop: 40, paddingTop: 40, borderTop: "1px solid rgba(192,133,82,0.2)" }}>
+          <div className="hero-stats" style={{ display: "flex", gap: 48, marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(192,133,82,0.2)" }}>
             {[
               { number: "5+", label: "Projects Completed" },
               { number: "5", label: "Languages Spoken" },
