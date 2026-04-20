@@ -295,8 +295,9 @@ export default function Services() {
             }}
           >
             {/* Images */}
+            {/* Images */}
             <div
-              style={{ direction: "ltr", position: "relative", height: 380 }}
+              style={{ direction: "ltr", position: "relative", height: 420 }}
             >
               {service.id === 1 ? (
                 <>
@@ -306,76 +307,80 @@ export default function Services() {
                       left: 0,
                       top: 0,
                       width: "52%",
-                      height: "85%",
+                      height: "78%",
                       borderRadius: 16,
                       overflow: "hidden",
                       boxShadow: "0 20px 40px rgba(75,46,43,0.15)",
+                      backgroundColor: "#f5f5f5",
                     }}
                   >
                     <Image
                       src={`/images/${service.images[0]}`}
                       alt={service.title}
                       fill
-                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>
                   <div
                     style={{
                       position: "absolute",
                       right: 0,
-                      top: 20,
+                      top: 10,
                       width: "44%",
-                      height: "75%",
+                      height: "70%",
                       borderRadius: 14,
                       overflow: "hidden",
                       boxShadow: "0 20px 40px rgba(75,46,43,0.12)",
+                      backgroundColor: "#f5f5f5",
                     }}
                   >
                     <Image
                       src={`/images/${service.images[1]}`}
                       alt={service.title}
                       fill
-                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>
                   <div
                     style={{
                       position: "absolute",
-                      left: "15%",
+                      left: "10%",
                       bottom: 0,
-                      width: "36%",
-                      height: "45%",
+                      width: "42%",
+                      height: "52%",
                       borderRadius: 12,
                       overflow: "hidden",
                       border: "3px solid #fff8f0",
                       boxShadow: "0 12px 30px rgba(75,46,43,0.15)",
+                      backgroundColor: "#f5f5f5",
                     }}
                   >
                     <Image
                       src={`/images/${service.images[2]}`}
                       alt={service.title}
                       fill
-                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>
                   <div
                     style={{
                       position: "absolute",
-                      right: "5%",
-                      bottom: 10,
-                      width: "28%",
-                      height: "38%",
+                      right: "2%",
+                      bottom: 0,
+                      width: "34%",
+                      height: "46%",
                       borderRadius: 10,
                       overflow: "hidden",
                       border: "3px solid #fff8f0",
                       boxShadow: "0 12px 30px rgba(75,46,43,0.12)",
+                      backgroundColor: "#f5f5f5",
                     }}
                   >
                     <Image
                       src={`/images/${service.images[3]}`}
                       alt={service.title}
                       fill
-                      style={{ objectFit: "contain", objectPosition: "center", backgroundColor: "#f5f5f5" }}
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>
                 </>
@@ -394,7 +399,7 @@ export default function Services() {
                     src={`/images/${service.images[0]}`}
                     alt={service.title}
                     fill
-                    style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                    style={{ objectFit: "cover", objectPosition: "center" }}
                   />
                 </div>
               )}
