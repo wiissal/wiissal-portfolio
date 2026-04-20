@@ -101,7 +101,7 @@ export default function Services() {
   const introRef = useRef(null);
   const serviceRefs = useRef([]);
   const stackRef = useRef(null);
-
+const collageRefs = useRef([]);
   useEffect(() => {
     const ctx = gsap.context(() => {
       // intro block
@@ -295,116 +295,44 @@ export default function Services() {
             }}
           >
             {/* Images */}
-            {/* Images */}
-            <div
-              style={{ direction: "ltr", position: "relative", height: 420 }}
-            >
-              {service.id === 1 ? (
-                <>
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      top: 0,
-                      width: "52%",
-                      height: "78%",
-                      borderRadius: 16,
-                      overflow: "hidden",
-                      boxShadow: "0 20px 40px rgba(75,46,43,0.15)",
-                      backgroundColor: "#f5f5f5",
-                    }}
-                  >
-                    <Image
-                      src={`/images/${service.images[0]}`}
-                      alt={service.title}
-                      fill
-                      style={{ objectFit: "contain", objectPosition: "center" }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      right: 0,
-                      top: 10,
-                      width: "44%",
-                      height: "70%",
-                      borderRadius: 14,
-                      overflow: "hidden",
-                      boxShadow: "0 20px 40px rgba(75,46,43,0.12)",
-                      backgroundColor: "#f5f5f5",
-                    }}
-                  >
-                    <Image
-                      src={`/images/${service.images[1]}`}
-                      alt={service.title}
-                      fill
-                      style={{ objectFit: "contain", objectPosition: "center" }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: "10%",
-                      bottom: 0,
-                      width: "42%",
-                      height: "52%",
-                      borderRadius: 12,
-                      overflow: "hidden",
-                      border: "3px solid #fff8f0",
-                      boxShadow: "0 12px 30px rgba(75,46,43,0.15)",
-                      backgroundColor: "#f5f5f5",
-                    }}
-                  >
-                    <Image
-                      src={`/images/${service.images[2]}`}
-                      alt={service.title}
-                      fill
-                      style={{ objectFit: "contain", objectPosition: "center" }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      right: "2%",
-                      bottom: 0,
-                      width: "34%",
-                      height: "46%",
-                      borderRadius: 10,
-                      overflow: "hidden",
-                      border: "3px solid #fff8f0",
-                      boxShadow: "0 12px 30px rgba(75,46,43,0.12)",
-                      backgroundColor: "#f5f5f5",
-                    }}
-                  >
-                    <Image
-                      src={`/images/${service.images[3]}`}
-                      alt={service.title}
-                      fill
-                      style={{ objectFit: "contain", objectPosition: "center" }}
-                    />
-                  </div>
-                </>
-              ) : (
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 20,
-                    overflow: "hidden",
-                    boxShadow: "0 20px 60px rgba(75,46,43,0.15)",
-                  }}
-                >
-                  <Image
-                    src={`/images/${service.images[0]}`}
-                    alt={service.title}
-                    fill
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                  />
-                </div>
-              )}
-            </div>
-
+<div style={{ direction: "ltr", position: "relative", height: 420 }}>
+ {service.id === 1 ? (
+  <>
+    <div
+      ref={(el) => (collageRefs.current[0] = el)}
+      onMouseEnter={() => gsap.to(collageRefs.current[0], { scale: 1.12, zIndex: 10, duration: 0.4, ease: "power2.out" })}
+      onMouseLeave={() => gsap.to(collageRefs.current[0], { scale: 1, zIndex: 1, duration: 0.5, ease: "power2.out" })}
+      style={{ position: "absolute", left: 0, top: 0, width: "52%", height: "78%", borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(75,46,43,0.15)", backgroundColor: "#f5f5f5", zIndex: 1, cursor: "pointer" }}>
+      <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
+    </div>
+    <div
+      ref={(el) => (collageRefs.current[1] = el)}
+      onMouseEnter={() => gsap.to(collageRefs.current[1], { scale: 1.12, zIndex: 10, duration: 0.4, ease: "power2.out" })}
+      onMouseLeave={() => gsap.to(collageRefs.current[1], { scale: 1, zIndex: 1, duration: 0.5, ease: "power2.out" })}
+      style={{ position: "absolute", right: 0, top: 10, width: "44%", height: "70%", borderRadius: 14, overflow: "hidden", boxShadow: "0 20px 40px rgba(75,46,43,0.12)", backgroundColor: "#f5f5f5", zIndex: 1, cursor: "pointer" }}>
+      <Image src={`/images/${service.images[1]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
+    </div>
+    <div
+      ref={(el) => (collageRefs.current[2] = el)}
+      onMouseEnter={() => gsap.to(collageRefs.current[2], { scale: 1.12, zIndex: 10, duration: 0.4, ease: "power2.out" })}
+      onMouseLeave={() => gsap.to(collageRefs.current[2], { scale: 1, zIndex: 2, duration: 0.5, ease: "power2.out" })}
+      style={{ position: "absolute", left: "10%", bottom: 0, width: "42%", height: "52%", borderRadius: 12, overflow: "hidden", border: "3px solid #fff8f0", boxShadow: "0 12px 30px rgba(75,46,43,0.15)", backgroundColor: "#f5f5f5", zIndex: 2, cursor: "pointer" }}>
+      <Image src={`/images/${service.images[2]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
+    </div>
+    <div
+      ref={(el) => (collageRefs.current[3] = el)}
+      onMouseEnter={() => gsap.to(collageRefs.current[3], { scale: 1.12, zIndex: 10, duration: 0.4, ease: "power2.out" })}
+      onMouseLeave={() => gsap.to(collageRefs.current[3], { scale: 1, zIndex: 2, duration: 0.5, ease: "power2.out" })}
+      style={{ position: "absolute", right: "2%", bottom: 0, width: "34%", height: "46%", borderRadius: 10, overflow: "hidden", border: "3px solid #fff8f0", boxShadow: "0 12px 30px rgba(75,46,43,0.12)", backgroundColor: "#f5f5f5", zIndex: 2, cursor: "pointer" }}>
+      <Image src={`/images/${service.images[3]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
+    </div>
+  </>
+) : (
+  <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(75,46,43,0.15)" }}>
+    <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
+  </div>
+)}
+</div>
             {/* Text */}
             <div style={{ direction: "ltr" }}>
               <span
