@@ -1,6 +1,6 @@
 # wiissal-portfolio
 
-Personal portfolio website built with **Next.js 14**, **Tailwind CSS**, and **GSAP** — showcasing my work as a Fullstack & Mobile Developer based in Morocco.
+Personal portfolio website built with **Next.js 14**, **GSAP**, and **Framer Motion** — showcasing my work as a Fullstack & Mobile Developer based in Morocco.
 
 🌐 **Live:** [wiissal-portfolio.vercel.app](https://wiissal-portfolio.vercel.app)
 
@@ -8,46 +8,83 @@ Personal portfolio website built with **Next.js 14**, **Tailwind CSS**, and **GS
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS + inline styles
-- **Animations:** GSAP + ScrollTrigger + Framer Motion
-- **Language:** JavaScript (React)
-- **Deployment:** Vercel
+| Category | Tools |
+|----------|-------|
+| Framework | Next.js 14 (App Router) |
+| Styling | Tailwind CSS + Inline Styles |
+| Animations | GSAP + ScrollTrigger + Framer Motion |
+| Language | JavaScript (React) |
+| Deployment | Vercel |
 
 ---
 
 ## Features
 
-- Animated preloader with letter reveal
+- Animated preloader with letter reveal and progress bar
 - Fixed navbar with hamburger menu on mobile
 - Hero section with CTA buttons and stats
 - Projects section with category filter and GSAP stagger entrance
-- Services & Technologies section with service blocks and tech stack cards
-- Contact section with floating social icons and form
+- Services & Technologies with alternating service blocks and tech stack cards
+- Contact section with floating social icons and message form
 - Hire Me slide-in modal panel triggered from navbar
-- Footer with flip animation on social icons
+- Footer with 3D flip animation on social icons
 - Fully responsive across all screen sizes
 
 ---
 
 ## Project Structure
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+wiissal-portfolio/
+├── public/
+│   └── images/
+├── src/
+│   └── app/
+│       ├── components/
+│       │   ├── Navbar.jsx
+│       │   ├── Preloader.jsx
+│       │   ├── Hero.jsx
+│       │   ├── Projects.jsx
+│       │   ├── Services.jsx
+│       │   ├── Contact.jsx
+│       │   ├── HireMe.jsx
+│       │   └── Footer.jsx
+│       ├── globals.css
+│       ├── layout.js
+│       └── page.js
+├── next.config.mjs
+└── package.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone the repository
+git clone https://github.com/wiissal/wiissal-portfolio.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Navigate to the project
+cd wiissal-portfolio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Start development server
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Deployment
+
+Deployed on **Vercel** with automatic redeployment on every push to `main`.
+
+---
+
+## Author
+
+**Wissal Ouboujemaa** — Fullstack & Mobile Developer, Agadir Morocco
+
