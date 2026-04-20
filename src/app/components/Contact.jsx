@@ -106,10 +106,10 @@ export default function Contact() {
           {/* Heading */}
           <div ref={leftRef} style={{ marginBottom: 56, textAlign: "center" }}>
             <h2 style={{ fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 800, color: "#4b2e2b", fontFamily: "var(--font-playfair)", margin: "0 0 20px", lineHeight: 1.1 }}>
-              Let's build something together.
+              Lets build something together.
             </h2>
             <p style={{ fontSize: 16, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif", lineHeight: 1.75, maxWidth: 500, margin: "0 auto" }}>
-              Have a project in mind or just want to say hello? Drop me a message and I'll get back to you.
+              Have a project in mind or just want to say hello? Drop me a message and I will get back to you.
             </p>
           </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 22, fontWeight: 800, color: "#4b2e2b", fontFamily: "var(--font-playfair)", marginBottom: 10 }}>Message sent!</h3>
-                <p style={{ fontSize: 14, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif" }}>I'll get back to you as soon as possible.</p>
+                <p style={{ fontSize: 14, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif" }}>I will get back to you as soon as possible.</p>
                 <button onClick={() => setSent(false)} style={{ marginTop: 24, padding: "10px 24px", borderRadius: 50, border: "2px solid #4b2e2b", backgroundColor: "transparent", color: "#4b2e2b", fontSize: 12, fontWeight: 700, fontFamily: "sans-serif", letterSpacing: 1.5, textTransform: "uppercase", cursor: "pointer" }}>
                   Send another
                 </button>
