@@ -56,10 +56,10 @@ const services = [
       "Auth, booking & real-time features",
     ],
     images: [
-      "services-design.jpg",
       "services-design1.jpg",
-      "services-mobile-1.jpg",
+      "services-design.jpg",
       "services-mobile-2.jpg",
+      "services-mobile-1.jpg",
     ],
 
     reverse: false,
@@ -100,6 +100,7 @@ export default function Services() {
   const sectionRef = useRef(null);
   const introRef = useRef(null);
   const serviceRefs = useRef([]);
+  const service2Ref = useRef(null);
   const stackRef = useRef(null);
 const collageRefs = useRef([]);
   useEffect(() => {
@@ -328,9 +329,13 @@ const collageRefs = useRef([]);
     </div>
   </>
 ) : (
-  <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(75,46,43,0.15)" }}>
-    <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
-  </div>
+  <div
+  ref={service2Ref}
+  onMouseEnter={() => gsap.to(service2Ref.current, { scale: 1.05, duration: 0.4, ease: "power2.out" })}
+  onMouseLeave={() => gsap.to(service2Ref.current, { scale: 1, duration: 0.5, ease: "power2.out" })}
+  style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(75,46,43,0.15)", backgroundColor: "#1e1e2e", cursor: "pointer" }}>
+  <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
+</div>
 )}
 </div>
             {/* Text */}
