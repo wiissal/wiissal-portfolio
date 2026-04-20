@@ -1,19 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# wiissal-portfolio
 
-## Getting Started
+Personal portfolio website built with **Next.js 14**, **Tailwind CSS**, and **GSAP** — showcasing my work as a Fullstack & Mobile Developer based in Morocco.
 
-First, run the development server:
+🌐 **Live:** [wiissal-portfolio.vercel.app](https://wiissal-portfolio.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
+## Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS + inline styles
+- **Animations:** GSAP + ScrollTrigger + Framer Motion
+- **Language:** JavaScript (React)
+- **Deployment:** Vercel
+
+---
+
+## Features
+
+- Animated preloader with letter reveal
+- Fixed navbar with hamburger menu on mobile
+- Hero section with CTA buttons and stats
+- Projects section with category filter and GSAP stagger entrance
+- Services & Technologies section with service blocks and tech stack cards
+- Contact section with floating social icons and form
+- Hire Me slide-in modal panel triggered from navbar
+- Footer with flip animation on social icons
+- Fully responsive across all screen sizes
+
+---
+
+## Project Structure
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
