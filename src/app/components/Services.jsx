@@ -55,7 +55,13 @@ const services = [
       "REST API integration",
       "Auth, booking & real-time features",
     ],
-    images: ["services-mobile-1.jpg", "services-mobile-2.jpg"],
+    images: [
+      "services-design.jpg",
+      "services-design1.jpg",
+      "services-mobile-1.jpg",
+      "services-mobile-2.jpg",
+    ],
+
     reverse: false,
   },
   {
@@ -290,34 +296,108 @@ export default function Services() {
           >
             {/* Images */}
             <div
-              style={{
-                direction: "ltr",
-                display: "flex",
-                gap: 16,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              style={{ direction: "ltr", position: "relative", height: 380 }}
             >
-              {service.images.map((img, j) => (
+              {service.id === 1 ? (
+                <>
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      width: "52%",
+                      height: "85%",
+                      borderRadius: 16,
+                      overflow: "hidden",
+                      boxShadow: "0 20px 40px rgba(75,46,43,0.15)",
+                    }}
+                  >
+                    <Image
+                      src={`/images/${service.images[0]}`}
+                      alt={service.title}
+                      fill
+                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      top: 20,
+                      width: "44%",
+                      height: "75%",
+                      borderRadius: 14,
+                      overflow: "hidden",
+                      boxShadow: "0 20px 40px rgba(75,46,43,0.12)",
+                    }}
+                  >
+                    <Image
+                      src={`/images/${service.images[1]}`}
+                      alt={service.title}
+                      fill
+                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "15%",
+                      bottom: 0,
+                      width: "36%",
+                      height: "45%",
+                      borderRadius: 12,
+                      overflow: "hidden",
+                      border: "3px solid #fff8f0",
+                      boxShadow: "0 12px 30px rgba(75,46,43,0.15)",
+                    }}
+                  >
+                    <Image
+                      src={`/images/${service.images[2]}`}
+                      alt={service.title}
+                      fill
+                      style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: "5%",
+                      bottom: 10,
+                      width: "28%",
+                      height: "38%",
+                      borderRadius: 10,
+                      overflow: "hidden",
+                      border: "3px solid #fff8f0",
+                      boxShadow: "0 12px 30px rgba(75,46,43,0.12)",
+                    }}
+                  >
+                    <Image
+                      src={`/images/${service.images[3]}`}
+                      alt={service.title}
+                      fill
+                      style={{ objectFit: "contain", objectPosition: "center", backgroundColor: "#f5f5f5" }}
+                    />
+                  </div>
+                </>
+              ) : (
                 <div
-                  key={j}
                   style={{
                     position: "relative",
+                    width: "100%",
+                    height: "100%",
                     borderRadius: 20,
                     overflow: "hidden",
                     boxShadow: "0 20px 60px rgba(75,46,43,0.15)",
-                    flex: j === 0 ? "0 0 55%" : "0 0 40%",
-                    aspectRatio: j === 0 ? "9/16" : "9/16",
                   }}
                 >
                   <Image
-                    src={`/images/${img}`}
+                    src={`/images/${service.images[0]}`}
                     alt={service.title}
                     fill
-                    style={{ objectFit: "cover", objectPosition: "center" }}
+                    style={{ objectFit: "contain", objectPosition: "center" , backgroundColor: "#f5f5f5" }}
                   />
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Text */}
