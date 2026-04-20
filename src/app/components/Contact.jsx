@@ -92,7 +92,7 @@ export default function Contact() {
         .ci-0:hover,.ci-1:hover,.ci-2:hover{animation-play-state:paused;}
       `}</style>
 
-      <section ref={sectionRef} id="contact" style={{ backgroundColor: "#fff8f0", padding: "100px 0", scrollMarginTop: "80px" }}>
+      <section ref={sectionRef} id="contact" style={{ backgroundColor: "#fff8f0", padding: "60px 0", scrollMarginTop: "40px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
 
           {/* Section label */}
