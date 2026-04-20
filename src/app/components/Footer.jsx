@@ -121,7 +121,7 @@ export default function Footer() {
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span style={{ fontSize: 13, color: "rgba(255,248,240,0.55)", fontFamily: "sans-serif" }}>Agadir, Morocco</span>
+                  <span style={{ fontSize: 13, color: "rgba(255,248,240,0.55)", fontFamily: "sans-serif" }}>AGADIR, Morocco</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c08552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

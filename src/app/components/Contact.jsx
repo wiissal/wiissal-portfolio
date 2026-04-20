@@ -100,7 +100,7 @@ export default function Contact() {
             <div style={{ width: 40, height: 2, backgroundColor: "#c08552" }} />
             <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "#c08552", fontFamily: "sans-serif" }}>
               Contact
-            </span>
+            </span> 
           </div>
 
           {/* Heading */}
