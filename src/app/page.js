@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Projects from './components/Projects'
 import Services from './components/Services'
 import Contact from './components/Contact'
+import HireMe from './components/HireMe'
 export default function Home() {
   return (
     <main>
@@ -13,6 +14,7 @@ export default function Home() {
       <Projects />
       <Services />
       <Contact />
+      <HireMe />
       
     </main>
   )
