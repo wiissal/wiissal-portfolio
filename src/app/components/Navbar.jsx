@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export default function Navbar() {
+export default function Navbar({ onHireClick }) {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -65,9 +65,9 @@ export default function Navbar() {
         {/* Nav Links */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 48 }}>
           {[
-            { label: 'Home',                   href: '#home' },
+            { label: 'Home', href: '#home' },
             { label: 'Services & Technologies', href: '#services' },
-            { label: 'Contact',                href: '#contact' },
+            { label: 'Contact', href: '#contact' },
           ].map((item) => (
             <motion.a
               key={item.label}
@@ -91,8 +91,8 @@ export default function Navbar() {
         </div>
 
         {/* Hire Me */}
-        <motion.a
-          href="#contact"
+        <motion.button
+          onClick={onHireClick}
           whileHover={{ backgroundColor: '#4b2e2b', color: '#fff8f0' }}
           whileTap={{ scale: 0.95 }}
           style={{
@@ -104,12 +104,13 @@ export default function Navbar() {
             color: '#4b2e2b',
             padding: '12px 28px',
             borderRadius: 50,
-            textDecoration: 'none',
+            backgroundColor: 'transparent',
+            cursor: 'pointer',
             transition: 'all 0.2s',
           }}
         >
           Hire Me
-        </motion.a>
+        </motion.button>
 
       </div>
     </motion.nav>
