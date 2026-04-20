@@ -332,7 +332,7 @@ const collageRefs = useRef([]);
   ) : service.id === 2 ? (
     <div
       style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, boxShadow: "0 20px 60px rgba(75,46,43,0.15)", backgroundColor: "#1e1e2e", cursor: "pointer" }}
-      onMouseEnter={() => gsap.to(service2Ref.current, { scale: 1.06, duration: 0.4, ease: "power2.out" })}
+      onMouseEnter={() => gsap.to(service2Ref.current, { scale: 1.30, duration: 0.4, ease: "power2.out" })}
       onMouseLeave={() => gsap.to(service2Ref.current, { scale: 1, duration: 0.5, ease: "power2.out" })}>
       <div ref={service2Ref} style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, overflow: "hidden" }}>
         <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "contain", objectPosition: "center" }} />
@@ -341,7 +341,7 @@ const collageRefs = useRef([]);
   ) : (
     <div
       style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, boxShadow: "0 20px 60px rgba(75,46,43,0.15)", backgroundColor: "#f5f5f5", cursor: "pointer" }}
-      onMouseEnter={() => gsap.to(service3Ref.current, { scale: 1.06, duration: 0.4, ease: "power2.out" })}
+      onMouseEnter={() => gsap.to(service3Ref.current, { scale: 1.30, duration: 0.4, ease: "power2.out" })}
       onMouseLeave={() => gsap.to(service3Ref.current, { scale: 1, duration: 0.5, ease: "power2.out" })}>
       <div ref={service3Ref} style={{ position: "relative", width: "100%", height: "100%", borderRadius: 20, overflow: "hidden" }}>
         <Image src={`/images/${service.images[0]}`} alt={service.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
