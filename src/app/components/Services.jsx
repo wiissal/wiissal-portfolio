@@ -25,22 +25,7 @@ const checkpoints = [
     desc: "From idea and design to deployment",
   },
 ];
-const stack = [
-  "React",
-  "React Native",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "PostgreSQL",
-  "Zustand",
-  "Docker",
-  "Git",
-  "Figma",
-  "JWT",
-  "Sequelize",
-  "Tailwind",
-  "Expo",
-];
+
 
 const services = [
   {
@@ -439,70 +424,99 @@ const collageRefs = useRef([]);
         ))}
 
         {/* Tech stack */}
-        <div
-          ref={stackRef}
-          style={{
-            borderTop: "1px solid rgba(192,133,82,0.2)",
-            paddingTop: 80,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              marginBottom: 40,
-            }}
-          >
+        <div ref={stackRef} style={{ borderTop: "1px solid rgba(192,133,82,0.2)", paddingTop: 80 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 40, height: 2, backgroundColor: "#c08552" }} />
-            <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                color: "#c08552",
-                fontFamily: "sans-serif",
-              }}
-            >
+            <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "#c08552", fontFamily: "sans-serif" }}>
               Tech Stack
             </span>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-            {stack.map((tech) => (
-              <span
-                key={tech}
-                className="stack-pill"
-                style={{
-                  padding: "10px 22px",
-                  borderRadius: 50,
-                  border: "1.5px solid rgba(75,46,43,0.15)",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#4b2e2b",
-                  fontFamily: "sans-serif",
-                  backgroundColor: "rgba(192,133,82,0.06)",
-                  transition: "all 0.3s ease",
-                  cursor: "default",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#4b2e2b";
-                  e.currentTarget.style.color = "#fff8f0";
-                  e.currentTarget.style.borderColor = "#4b2e2b";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(192,133,82,0.06)";
-                  e.currentTarget.style.color = "#4b2e2b";
-                  e.currentTarget.style.borderColor = "rgba(75,46,43,0.15)";
-                }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+          <p style={{ fontSize: 16, color: "rgba(75,46,43,0.55)", fontFamily: "sans-serif", marginBottom: 56, lineHeight: 1.6 }}>
+            FULL STACK
+          </p>
+
+          {[
+            {
+              category: "Frontend",
+              items: [
+                { name: "React", desc: "Components, hooks & state management.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                { name: "Next.js", desc: "SSR, routing & full-stack React.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+                { name: "JavaScript", desc: "ES6+, async & DOM logic.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+                { name: "Tailwind CSS", desc: "Utility-first modern styling.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+              ],
+            },
+            {
+              category: "Mobile",
+              items: [
+                { name: "React Native", desc: "Cross-platform mobile apps.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                { name: "Expo", desc: "Fast mobile dev & OTA updates.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg" },
+              ],
+            },
+            {
+              category: "Backend",
+              items: [
+                { name: "Node.js", desc: "APIs, services & background jobs.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+                { name: "Express", desc: "REST APIs, routing & middlewares.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+              ],
+            },
+            {
+              category: "Database",
+              items: [
+                { name: "PostgreSQL", desc: "Relational schemas & indexing.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+                { name: "Sequelize", desc: "ORM for Node.js & PostgreSQL.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" },
+              ],
+            },
+            {
+              category: "DevOps",
+              items: [
+                { name: "Docker", desc: "Containerized environments.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "Git", desc: "Version control & collaboration.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+                { name: "CI/CD", desc: "Automated build, test & deploy.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+              ],
+            },
+            {
+              category: "Design",
+              items: [
+                { name: "Figma", desc: "Wireframes & interactive prototypes.", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+              ],
+            },
+          ].map((group) => (
+            <div key={group.category} style={{ marginBottom: 48 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "#c08552", fontFamily: "sans-serif" }}>
+                  {group.category}
+                </span>
+                <div style={{ flex: 1, height: 1, backgroundColor: "rgba(192,133,82,0.15)" }} />
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16 }}>
+                {group.items.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="stack-pill"
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(192,133,82,0.5)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(75,46,43,0.1)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.03)"; e.currentTarget.style.transform = "translateY(0)"; }}
+                    style={{ padding: "20px", borderRadius: 16, border: "1px solid rgba(75,46,43,0.1)", backgroundColor: "rgba(192,133,82,0.03)", cursor: "default", transition: "all 0.3s ease" }}>
+                    <div style={{ width: 40, height: 40, marginBottom: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <img src={tech.icon} alt={tech.name} width={36} height={36} style={{ objectFit: "contain" }} />
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "#c08552", fontFamily: "sans-serif", marginBottom: 6 }}>
+                      {group.category}
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 800, color: "#4b2e2b", fontFamily: "var(--font-playfair)", marginBottom: 6 }}>
+                      {tech.name}
+                    </div>
+                    <div style={{ fontSize: 12.5, color: "rgba(75,46,43,0.55)", fontFamily: "sans-serif", lineHeight: 1.5 }}>
+                      {tech.desc}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
 }
+    
