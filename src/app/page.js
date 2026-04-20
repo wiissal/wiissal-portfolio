@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import HireMe from "./components/HireMe";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [hireOpen, setHireOpen] = useState(false);
@@ -19,6 +20,7 @@ export default function Home() {
       <Services />
       <Contact />
       <HireMe isOpen={hireOpen} onClose={() => setHireOpen(false)} />
+      <Footer />
     </>
   );
 }
