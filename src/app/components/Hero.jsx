@@ -82,7 +82,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="hero-btn"
               style={{ padding: "16px 36px", backgroundColor: "transparent", color: "#4b2e2b", borderRadius: 50, fontSize: 14, fontWeight: 600, letterSpacing: 1, textDecoration: "none", fontFamily: "sans-serif", textTransform: "uppercase", border: "2px solid #4b2e2b" }}>
-              Hire Me
+              Contact Me
             </motion.a>
           </div>
 
