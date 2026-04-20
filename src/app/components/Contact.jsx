@@ -85,10 +85,10 @@ export default function Contact() {
           {/* Heading */}
           <div ref={leftRef} style={{ marginBottom: 56 }}>
             <h2 style={{ fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 800, color: "#4b2e2b", fontFamily: "var(--font-playfair)", margin: "0 0 20px", lineHeight: 1.1 }}>
-              Let`'`s build something together.
+              Lets build something together.
             </h2>
             <p style={{ fontSize: 16, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif", lineHeight: 1.75, maxWidth: 600, margin: 0 }}>
-              Have a project in mind or just want to say hello? I'm always open to new opportunities and collaborations. Drop me a message and I'll get back to you.
+              Have a project in mind or just want to say hello? Im always open to new opportunities and collaborations. Drop me a message and I will get back to you.
             </p>
           </div>
 
@@ -97,21 +97,18 @@ export default function Contact() {
             {contacts.map((c, i) => (
               <a
                 key={i}
-                href={c.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`contact-icon-${i}`}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(192,133,82,0.5)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.08)"; e.currentTarget.style.animationPlayState = "paused"; e.currentTarget.style.transform = "translateY(-8px) scale(1.04)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(75,46,43,0.1)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.03)"; e.currentTarget.style.animationPlayState = "running"; e.currentTarget.style.transform = ""; }}
-                style={{ display: "flex", alignItems: "center", gap: 16, padding: "22px 24px", borderRadius: 16, border: "1px solid rgba(75,46,43,0.1)", backgroundColor: "rgba(192,133,82,0.03)", textDecoration: "none", transition: "border-color 0.3s ease, background-color 0.3s ease" }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: "rgba(192,133,82,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <c.icon size={20} color="#c08552" strokeWidth={2} />
-                </div>
-                <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "#c08552", fontFamily: "sans-serif", marginBottom: 3 }}>{c.label}</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "#4b2e2b", fontFamily: "sans-serif" }}>{c.value}</div>
-                </div>
-              </a>
+  href={c.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  className={`contact-icon-${i}`}
+  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(192,133,82,0.5)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.08)"; e.currentTarget.style.animationPlayState = "paused"; e.currentTarget.style.transform = "translateY(-8px) scale(1.04)"; }}
+  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(75,46,43,0.1)"; e.currentTarget.style.backgroundColor = "rgba(192,133,82,0.03)"; e.currentTarget.style.animationPlayState = "running"; e.currentTarget.style.transform = ""; }}
+  style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, padding: "32px 24px", borderRadius: 16, border: "1px solid rgba(75,46,43,0.1)", backgroundColor: "rgba(192,133,82,0.03)", textDecoration: "none", transition: "border-color 0.3s ease, background-color 0.3s ease" }}>
+  <div style={{ width: 52, height: 52, borderRadius: 14, backgroundColor: "rgba(192,133,82,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <c.icon size={22} color="#c08552" strokeWidth={2} />
+  </div>
+  <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "#4b2e2b", fontFamily: "sans-serif" }}>{c.label}</div>
+</a>
             ))}
           </div>
 
@@ -125,7 +122,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 22, fontWeight: 800, color: "#4b2e2b", fontFamily: "var(--font-playfair)", marginBottom: 10 }}>Message sent!</h3>
-                <p style={{ fontSize: 14, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif" }}>I'll get back to you as soon as possible.</p>
+                <p style={{ fontSize: 14, color: "rgba(75,46,43,0.6)", fontFamily: "sans-serif" }}>I`'`ll get back to you as soon as possible.</p>
                 <button onClick={() => setSent(false)} style={{ marginTop: 24, padding: "10px 24px", borderRadius: 50, border: "2px solid #4b2e2b", backgroundColor: "transparent", color: "#4b2e2b", fontSize: 12, fontWeight: 700, fontFamily: "sans-serif", letterSpacing: 1.5, textTransform: "uppercase", cursor: "pointer" }}>
                   Send another
                 </button>
