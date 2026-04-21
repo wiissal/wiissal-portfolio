@@ -8,6 +8,7 @@ export default function Preloader() {
   const [phase, setPhase] = useState(1)
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const t1 = setTimeout(() => setPhase(2), 2500) // circles explode
     const t2 = setTimeout(() => setPhase(3), 3500) // name appears
     const t3 = setTimeout(() => setIsVisible(false), 5500) // fade out
