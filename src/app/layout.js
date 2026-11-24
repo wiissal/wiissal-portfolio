@@ -1,5 +1,6 @@
 import { Playfair_Display, Orbitron, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import Navbar from '../components/Navbar' ; 
 
 // old font: kept until the old components are replaced
 const playfair = Playfair_Display({
@@ -38,7 +39,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }
