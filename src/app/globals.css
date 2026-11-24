@@ -1,20 +1,38 @@
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  /* backgrounds: deep space */
+  --color-space-950: #05030d;
+  --color-space-900: #0b0618;
+  --color-space-800: #140b2e;
+  --color-space-700: #1f1245;
+
+  /* accents: planets & nebula */
+  --color-violet-glow: #7b3fe4;
+  --color-cyan-glow: #2ec4f1;
+  --color-nebula: #e0408a;
+
+  /* text */
+  --color-star: #e8e6f5;
+  --color-muted: #9b95b8;
+}
+@theme inline {
+  --font-display: var(--font-orbitron);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: #ffffff;
-  color: #1a1a1a;
-  font-family: 'Inter', sans-serif;
-}
-html, body {
-  overflow-x: hidden;
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-space-900 text-star antialiased;
+  }
 }
