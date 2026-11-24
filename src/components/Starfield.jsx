@@ -8,7 +8,9 @@ export default function Starfield() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     let stars = [];
     let animationId;
 
@@ -19,7 +21,7 @@ export default function Starfield() {
       stars = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.3 + 0.2,
+        radius: Math.random() * 1.8 + 0.6,
         alpha: Math.random(),
         speed: Math.random() * 0.015 + 0.003,
       }));
@@ -33,6 +35,8 @@ export default function Starfield() {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(232, 230, 245, ${star.alpha})`;
+        ctx.shadowBlur = star.radius > 2 ? 8 : 0;
+        ctx.shadowColor = "rgba(46, 196, 241, 0.8)";
         ctx.fill();
       }
       if (!reduceMotion) animationId = requestAnimationFrame(draw);
