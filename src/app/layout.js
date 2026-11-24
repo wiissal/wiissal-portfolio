@@ -2,6 +2,8 @@ import { Playfair_Display, Orbitron, Space_Grotesk, JetBrains_Mono } from 'next/
 import './globals.css'
 import Navbar from '../components/Navbar' ; 
 
+import Starfield from '../components/Starfield';
+
 // old font: kept until the old components are replaced
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -40,6 +42,7 @@ export default function RootLayout({ children }) {
       className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
       <body>
+        <Starfield />
         <Navbar />
         {children}
       </body>
