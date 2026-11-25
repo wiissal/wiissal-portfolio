@@ -18,10 +18,41 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
       {/* planets (desktop only for now) */}
-      <Planet label="FULL STACK" href="/projects" size={190} color="#3b2a8f" glow="#7b3fe4" className="-left-10 top-28 hidden lg:block" />
-      <Planet label="MOBILE" href="/projects" size={130} color="#0e6e8c" glow="#2ec4f1" className="left-[26%] top-24 hidden lg:block" delay={1} />
-      <Planet label="UI / UX" href="/projects" size={110} color="#8c1f5a" glow="#e0408a" className="right-[20%] top-32 hidden lg:block" delay={2} />
-      <Planet label="BACKEND & API" href="/projects" size={200} color="#0e4f6e" glow="#2ec4f1" className="-right-12 bottom-40 hidden lg:block" delay={0.5} />
+      <Planet
+        label="FULL STACK"
+        href="/projects"
+        image="/planets/planet-fullstack.webp"
+        size={200}
+        color="#7b3fe4"
+        className="-left-10 top-28 hidden lg:block"
+      />
+      <Planet
+        label="MOBILE"
+        href="/projects"
+        image="/planets/planet-mobile.webp"
+        size={140}
+        color="#2ec4f1"
+        className="left-[26%] top-24 hidden lg:block"
+        delay={1}
+      />
+      <Planet
+        label="UI / UX"
+        href="/projects"
+        image="/planets/planet-uiux.webp"
+        size={120}
+        color="#f59e0b"
+        className="right-[20%] top-32 hidden lg:block"
+        delay={2}
+      />
+      <Planet
+        label="BACKEND & API"
+        href="/projects"
+        image="/planets/planet-backend.webp"
+        size={210}
+        color="#c2703d"
+        className="-right-12 bottom-40 hidden lg:block"
+        delay={0.5}
+      />
 
       {/* content */}
       <div className="relative z-10 mx-auto max-w-3xl text-center">
@@ -56,8 +87,8 @@ export default function Hero() {
           animate="show"
           className="mx-auto mt-6 max-w-xl text-lg text-muted"
         >
-          Full-stack &amp; mobile developer building fast, clean web and mobile apps with React,
-          React Native and Node.js.
+          Full-stack &amp; mobile developer building fast, clean web and mobile
+          apps with React, React Native and Node.js.
         </motion.p>
 
         <motion.div
