@@ -1,5 +1,5 @@
-import ProjectCard from "../../components/ProjectCard";
-import { projects } from "../../data/projects";
+import ProjectsExplorer from "../../components/ProjectsExplorer";
+import { projects, categories } from "../../data/projects";
 
 export const metadata = {
   title: "Projects | Wissal Ouboujemaa",
@@ -8,22 +8,13 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-6 pt-32 pb-24">
-      {" "}
-      <p className="font-mono text-sm tracking-[0.3em] text-cyan-glow">
-        MISSION_ARCHIVE
-      </p>
-      <h1 className="mt-3 font-display text-4xl font-bold tracking-widest md:text-5xl">
-        PROJECTS
-      </h1>
+      <p className="font-mono text-sm tracking-[0.3em] text-cyan-glow">MISSION_ARCHIVE</p>
+      <h1 className="mt-3 font-display text-4xl font-bold tracking-widest md:text-5xl">PROJECTS</h1>
       <p className="mt-4 max-w-xl text-muted">
         Every mission I&apos;ve launched: web, mobile and backend.
       </p>
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {" "}
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
+
+      <ProjectsExplorer projects={projects} categories={categories} />
     </main>
   );
 }
