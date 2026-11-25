@@ -19,8 +19,8 @@ export default function Planet({
   return (
     <motion.div
       className={`absolute ${className}`}
-      animate={reduceMotion ? {} : { y: [0, -14, 0] }}
-      transition={{ duration: 6, delay, repeat: Infinity, ease: "easeInOut" }}
+      animate={reduceMotion ? {} : {y: [0, -25, 0], x: [0, 8, 0] }}
+      transition={{ duration: 4, delay, repeat: Infinity, ease: "easeInOut" }}
     >
       <Link
         href={href}
@@ -42,7 +42,7 @@ export default function Planet({
             alt=""
             fill
             sizes={`${size}px`}
-            className="rounded-full object-cover"
+            className="rounded-full object-cover motion-safe:animate-[spin_60s_linear_infinite]"
           />
         )}
 
