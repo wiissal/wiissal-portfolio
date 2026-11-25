@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -26,10 +27,7 @@ export default function Navbar() {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-2xl border border-white/10 bg-space-950/60 px-4 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:px-6">
         {/* logo */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-glow font-display text-base font-bold">
-            W
-          </span>
-          <span className="font-display text-sm font-bold tracking-widest">WISSAL</span>
+          <Image src="/logo.webp" alt="" width={36} height={36} priority className="h-9 w-9" />
         </Link>
 
         {/* desktop links */}
