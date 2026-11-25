@@ -1,0 +1,1 @@
+export const SUBJECTS = ["Job opportunity", "Freelance project", "Collaboration", "Other"];
