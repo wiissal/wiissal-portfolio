@@ -25,22 +25,55 @@ export default function Hero() {
         variants={fadeUp}
         initial="hidden"
         animate="show"
-        className="absolute left-1/2 top-28 z-20 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-glow/30 bg-cyan-glow/5 px-4 py-1.5 font-mono text-xs tracking-[0.2em] text-cyan-glow"
+        className="absolute bottom-8 right-8 z-20 hidden items-center gap-2 whitespace-nowrap rounded-full border border-cyan-glow/30 bg-space-950/50 px-4 py-1.5 font-mono text-xs tracking-[0.2em] text-cyan-glow backdrop-blur-sm md:flex"
       >
-        <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+        
         AVAILABLE FOR NEW MISSIONS
       </motion.p>
 
       {/* planets */}
-      <Planet label="FULL STACK" href="/projects" image="/planets/planet-fullstack.webp" size={190} color="#7b3fe4" className="left-[6%] top-[22%] hidden lg:block" />
-      <Planet label="MOBILE" href="/projects" image="/planets/planet-mobile.webp" size={130} color="#2ec4f1" className="left-[25%] top-[16%] hidden lg:block" delay={1} />
-      <Planet label="UI / UX" href="/projects" image="/planets/planet-uiux.webp" size={120} color="#f59e0b" className="right-[25%] top-[18%] hidden lg:block" delay={2} />
-      <Planet label="BACKEND & API" href="/projects" image="/planets/planet-backend.webp" size={200} color="#c2703d" className="right-[6%] top-[36%] hidden lg:block" delay={0.5} />
+      <Planet
+        label="FULL STACK"
+        href="/projects"
+        image="/planets/planet-fullstack.webp"
+        size={190}
+        color="#7b3fe4"
+        className="left-[6%] top-[22%] hidden lg:block"
+      />
+      <Planet
+        label="MOBILE"
+        href="/projects"
+        image="/planets/planet-mobile.webp"
+        size={130}
+        color="#2ec4f1"
+        className="left-[25%] top-[16%] hidden lg:block"
+        delay={1}
+      />
+      <Planet
+        label="UI / UX"
+        href="/projects"
+        image="/planets/planet-uiux.webp"
+        size={120}
+        color="#f59e0b"
+        className="right-[25%] top-[18%] hidden lg:block"
+        delay={2}
+      />
+      <Planet
+        label="BACKEND & API"
+        href="/projects"
+        image="/planets/planet-backend.webp"
+        size={200}
+        color="#c2703d"
+        className="right-[6%] top-[36%] hidden lg:block"
+        delay={0.5}
+      />
 
       {/* astronaut: outer div positionsinner motion.div animates */}
       <div className="absolute bottom-[33%] left-1/2 z-10 -translate-x-1/2">
         <motion.div
-          animate={reduceMotion ? {} : { y: [0, -8, 0], rotate: [-1.5, 1.5, -1.5] }}
+          animate={
+            reduceMotion ? {} : { y: [0, -8, 0], rotate: [-1.5, 1.5, -1.5] }
+          }
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
@@ -82,7 +115,8 @@ export default function Hero() {
           animate="show"
           className="mx-auto mt-4 max-w-2xl text-balance tracking-wide text-star/80"
         >
-          Full-stack &amp; mobile developer building fast, clean web and mobile apps.
+          Full-stack &amp; mobile developer building fast, clean web and mobile
+          apps.
         </motion.p>
 
         <motion.div
