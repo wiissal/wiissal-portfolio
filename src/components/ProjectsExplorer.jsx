@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
 import ProjectCard from "./ProjectCard";
+import SearchBar from "./SearchBar";
 
 export default function ProjectsExplorer({ projects, categories }) {
   const [category, setCategory] = useState("All");
@@ -13,7 +13,8 @@ export default function ProjectsExplorer({ projects, categories }) {
     return projects.filter((p) => {
       const matchesCategory = category === "All" || p.category === category;
       const matchesQuery =
-        !q || [p.title, p.description, ...p.tags].join(" ").toLowerCase().includes(q);
+        !q ||
+        [p.title, p.description, ...p.tags].join(" ").toLowerCase().includes(q);
       return matchesCategory && matchesQuery;
     });
   }, [projects, category, query]);
@@ -27,7 +28,11 @@ export default function ProjectsExplorer({ projects, categories }) {
     <>
       {/* controls */}
       <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter by category"
+        >
           {categories.map((c) => {
             const active = c === category;
             return (
@@ -48,22 +53,17 @@ export default function ProjectsExplorer({ projects, categories }) {
           })}
         </div>
 
-        <label className="relative block md:w-72">
-          <span className="sr-only">Search projects</span>
-          <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search missions..."
-            className="w-full border border-white/15 bg-space-950/60 py-2.5 pl-10 pr-3 font-mono text-sm text-star outline-none transition placeholder:text-muted/60 focus:border-cyan-glow"
-          />
-        </label>
+        <SearchBar value={query} onChange={setQuery} />
       </div>
 
       {/* result count */}
-      <p className="mt-6 font-mono text-xs tracking-[0.2em] text-muted" aria-live="polite">
-        {visible.length} / {projects.length} MISSIONS
+      <p
+        className="mt-6 font-mono text-xs tracking-[0.2em] text-muted"
+        aria-live="polite"
+      >
+        {query
+          ? `${visible.length} RESULT${visible.length === 1 ? "" : "S"} FOR "${query.toUpperCase()}"`
+          : `${visible.length} / ${projects.length} MISSIONS`}
       </p>
 
       {/* grid or empty state */}
@@ -75,7 +75,9 @@ export default function ProjectsExplorer({ projects, categories }) {
         </div>
       ) : (
         <div className="mt-6 border border-dashed border-white/15 p-12 text-center">
-          <p className="font-mono text-sm tracking-[0.2em] text-muted">NO_SIGNAL_FOUND</p>
+          <p className="font-mono text-sm tracking-[0.2em] text-muted">
+            NO_SIGNAL_FOUND
+          </p>
           <button
             type="button"
             onClick={resetFilters}
