@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Preloader from "./components/Preloader";
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Services from "./components/Services";
@@ -15,8 +14,7 @@ export default function Home() {
 
   return (
     <>
-      <Preloader/>
-      <Navbar onHireClick={() => setHireOpen(true)} />
+      <Preloader />
       <Hero />
       <Projects />
       <Services />
