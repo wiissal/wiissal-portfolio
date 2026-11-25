@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
       <body>
