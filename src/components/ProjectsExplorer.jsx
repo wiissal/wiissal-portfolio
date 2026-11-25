@@ -14,7 +14,7 @@ export default function ProjectsExplorer({ projects, categories }) {
       const matchesCategory = category === "All" || p.category === category;
       const matchesQuery =
         !q ||
-        [p.title, p.description, ...p.tags].join(" ").toLowerCase().includes(q);
+        [p.title, p.category, p.description, ...p.tags].join(" ").toLowerCase().includes(q);
       return matchesCategory && matchesQuery;
     });
   }, [projects, category, query]);
