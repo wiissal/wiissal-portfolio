@@ -45,7 +45,7 @@ function Form({ onReset }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Your name" id="name" error={errors.name}>
-          <input id="name" name="name" type="text" autoComplete="name" placeholder="Jane Doe"
+          <input id="name" name="name" type="text" autoComplete="name" placeholder="..."
             defaultValue={values.name} aria-invalid={!!errors.name} aria-describedby={describedBy("name")} className={inputClass} />
         </Field>
         <Field label="Email" id="email" error={errors.email}>
