@@ -22,17 +22,17 @@ export default function Hero() {
         label="FULL STACK"
         href="/projects"
         image="/planets/planet-fullstack.webp"
-        size={200}
+        size={190}
         color="#7b3fe4"
-        className="-left-10 top-28 hidden lg:block"
+        className="left-[6%] top-[20%] hidden lg:block"
       />
       <Planet
         label="MOBILE"
         href="/projects"
         image="/planets/planet-mobile.webp"
-        size={140}
+        size={130}
         color="#2ec4f1"
-        className="left-[26%] top-24 hidden lg:block"
+        className="left-[24%] top-[12%] hidden lg:block"
         delay={1}
       />
       <Planet
@@ -41,19 +41,18 @@ export default function Hero() {
         image="/planets/planet-uiux.webp"
         size={120}
         color="#f59e0b"
-        className="right-[20%] top-32 hidden lg:block"
+        className="right-[24%] top-[14%] hidden lg:block"
         delay={2}
       />
       <Planet
         label="BACKEND & API"
         href="/projects"
         image="/planets/planet-backend.webp"
-        size={210}
+        size={200}
         color="#c2703d"
-        className="-right-12 bottom-40 hidden lg:block"
+        className="right-[6%] top-[48%] hidden lg:block"
         delay={0.5}
       />
-
       {/* content */}
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.p
