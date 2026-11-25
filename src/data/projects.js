@@ -49,7 +49,7 @@ export const projects = [
   {
     slug: "take-a-chef",
     title: "Take-a-Chef",
-    category: "Fullstack",
+    category: "Mobile",
     featured: true,
     description:
       "Mobile platform connecting clients with private chefs for personalized dining experiences.",
@@ -64,7 +64,7 @@ export const projects = [
   {
     slug: "grande-soiree-gnawa",
     title: "Grande Soirée Gnawa",
-    category: "Fullstack",
+    category: "Mobile",
     featured: false,
     description: "Mobile app for the Gnawa music festival in Agadir: event discovery and ticket booking.",
     problem: "Festival-goers had no single place to discover events and book tickets.",
@@ -103,7 +103,7 @@ export const projects = [
   {
     slug: "beni-mellal-tourism",
     title: "Beni Mellal Tourism",
-    category: "Mobile-Frontend",
+    category: "Mobile",
     featured: false,
      description: "Animated mobile travel guide showcasing the springs, lakes and heritage of the Beni Mellal region.",
     problem: "The region's attractions were hard to discover for travellers.",
