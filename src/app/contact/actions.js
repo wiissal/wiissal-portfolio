@@ -1,9 +1,9 @@
 "use server";
 
 import { Resend } from "resend";
+import { SUBJECTS } from "../../data/contact";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-export const SUBJECTS = ["Job opportunity", "Freelance project", "Collaboration", "Other"];
 
 function validate({ name, email, subject, message }) {
   const errors = {};
