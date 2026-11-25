@@ -14,7 +14,7 @@ export const projects = [
     tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Resend"],
     github: "",
     live: "https://www.gastromoroccan.com",
-    image: "/images/gastro-moroccan.jpg",
+    image: "/images/gastro-moroccan.png",
   },
     {
     slug: "softness",
@@ -29,7 +29,7 @@ export const projects = [
     tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/wiissal/softness",
     live: "https://softness-restaurant.vercel.app",
-    image: "/images/softness.jpg",
+    image: "/images/softness.png",
   },
   {
     slug: "cinetanger",
@@ -59,7 +59,7 @@ export const projects = [
     tags: ["React Native", "Node.js", "PostgreSQL", "Zustand"],
     github: "https://github.com/wiissal/take-a-chef",
     live: "",
-    image: "/images/take-a-chef.jpg",
+    image: "/images/take-a-chef.png",
   },
   {
     slug: "grande-soiree-gnawa",

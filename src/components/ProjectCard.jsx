@@ -6,14 +6,24 @@ export default function ProjectCard({ project }) {
 
   return (
     <article className="group flex flex-col overflow-hidden border border-white/10 bg-space-800/40 backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:border-violet-glow/60 hover:shadow-[0_0_40px_rgba(123,63,228,0.25)]">
-      {/* image */}
-      <div className="relative aspect-[16/10] overflow-hidden">
+            {/* image */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-space-950">
+        {/* blurred background fill */}
+        <Image
+          src={image}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="scale-110 object-cover opacity-40 blur-2xl"
+        />
+        {/* full image, nothing cropped */}
         <Image
           src={image}
           alt={`${title} screenshot`}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover transition duration-700 group-hover:scale-105"
+          className="object-contain p-4 transition duration-700 group-hover:scale-105"
         />
         <span className="absolute bottom-4 left-4 border border-white/20 bg-space-950/70 px-3 py-1 font-mono text-[11px] tracking-[0.2em] text-cyan-glow backdrop-blur-sm">
           {category.toUpperCase()}
