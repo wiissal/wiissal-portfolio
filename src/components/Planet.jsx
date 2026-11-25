@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function Planet({
   label,
   href,
+  image,
   size = 160,
   color = "#7b3fe4",
   glow = "#2ec4f1",
@@ -27,12 +29,31 @@ export default function Planet({
         style={{
           width: size,
           height: size,
-          background: `radial-gradient(circle at 30% 30%, ${glow} 0%, ${color} 45%, #05030d 100%)`,
-          boxShadow: `0 0 40px ${color}66, inset -20px -20px 50px rgba(0,0,0,0.6)`,
+          background: image
+            ? undefined
+            : `radial-gradient(circle at 30% 30%, ${glow} 0%, ${color} 45%, #05030d 100%)`,
+          boxShadow: `0 0 50px ${color}66`,
         }}
       >
+        {/* planet texture */}
+        {image && (
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes={`${size}px`}
+            className="rounded-full object-cover"
+          />
+        )}
+
+        {/* dark side shading */}
+        <span className="absolute inset-0 rounded-full shadow-[inset_-20px_-20px_50px_rgba(0,0,0,0.6)]" />
+
+        {/* hover ring */}
         <span className="absolute inset-0 rounded-full opacity-0 ring-2 ring-cyan-glow/60 transition-opacity duration-500 group-hover:opacity-100" />
-        <span className="relative font-display text-xs font-bold tracking-[0.25em] text-star drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] md:text-sm">
+
+        {/* label */}
+        <span className="relative font-display text-xs font-bold tracking-[0.25em] text-star drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-sm">
           {label}
         </span>
       </Link>
