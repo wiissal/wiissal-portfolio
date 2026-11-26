@@ -18,21 +18,35 @@ export default function Footer() {
         {/* brand */}
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image src="/logo.svg" alt="" width={32} height={32} className="h-8 w-8" />
-            <span className="font-display text-sm font-bold tracking-widest">WISSAL OUBOUJEMAA</span>
+            <Image
+              src="/logo.webp"
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />{" "}
+            <span className="font-display text-sm font-bold tracking-widest">
+              WISSAL OUBOUJEMAA
+            </span>
           </Link>
           <p className="mt-4 max-w-sm text-sm text-muted">
-            Full-stack &amp; mobile developer building fast, accessible web and mobile apps.
+            Full-stack &amp; mobile developer building fast, accessible web and
+            mobile apps.
           </p>
         </div>
 
         {/* navigation */}
         <nav aria-label="Footer">
-          <p className="font-mono text-xs tracking-[0.2em] text-cyan-glow">NAVIGATE</p>
+          <p className="font-mono text-xs tracking-[0.2em] text-cyan-glow">
+            NAVIGATE
+          </p>
           <ul className="mt-4 space-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-muted transition hover:text-star">
+                <Link
+                  href={link.href}
+                  className="text-sm text-muted transition hover:text-star"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -42,9 +56,13 @@ export default function Footer() {
 
         {/* connect */}
         <div>
-          <p className="font-mono text-xs tracking-[0.2em] text-cyan-glow">CONNECT</p>
+          <p className="font-mono text-xs tracking-[0.2em] text-cyan-glow">
+            CONNECT
+          </p>
           <SocialLinks className="mt-4" />
-          <p className="mt-4 text-xs text-muted/70">Morocco · Remote worldwide</p>
+          <p className="mt-4 text-xs text-muted/70">
+            Morocco · Remote worldwide
+          </p>
         </div>
       </div>
 
