@@ -1,7 +1,7 @@
 import { Playfair_Display, Orbitron, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar' ; 
-
+import { HireProvider } from '../components/HireProvider'
 import Starfield from '../components/Starfield';
 
 // old font: kept until the old components are replaced
@@ -43,9 +43,11 @@ export default function RootLayout({ children }) {
       className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
       <body>
-        <Starfield />
-        <Navbar />
-        {children}
+        <HireProvider>
+         <Starfield />
+         <Navbar />
+         {children}
+        </HireProvider>
       </body>
     </html>
   )
