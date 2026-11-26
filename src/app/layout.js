@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '../components/Navbar' ; 
 import { HireProvider } from '../components/HireProvider'
 import Starfield from '../components/Starfield';
+import Footer from '../components/Footer'
 
 // old font: kept until the old components are replaced
 const playfair = Playfair_Display({
@@ -46,7 +47,8 @@ export default function RootLayout({ children }) {
    <HireProvider>
     <Starfield />
     <Navbar />
-    {children}
+    {children}t
+    <Footer />
     </HireProvider>
     </body>
    </html>
