@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Preloader from "./components/Preloader";
 import Hero from "../components/Hero";
 import Projects from "./components/Projects";
 import Services from "./components/Services";
@@ -14,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Preloader />
+      
       <Hero />
       <Projects />
       <Services />
