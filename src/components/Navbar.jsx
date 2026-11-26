@@ -5,7 +5,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import HireModal from "./HireModal";
+import { useHire } from "./HireModal";
 
 const links = [
   { href: "/", label: "Home" },
@@ -21,10 +21,9 @@ function isActive(pathname, href) {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hireOpen, setHireOpen] = useState(false);
-
+  const { openHire } = useHire();
   return (
-  <>
+  
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-2xl border border-white/10 bg-space-950/60 px-4 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:px-6">
         {/* logo */}
@@ -70,7 +69,7 @@ export default function Navbar() {
         {/* hire me (desktop) */}
         <button
           type="button"
-          onClick={() => setHireOpen(true)}
+          onClick={openHire}
           className="hidden rounded-xl bg-violet-glow px-5 py-2.5 text-sm font-medium transition hover:shadow-[0_0_24px_var(--color-violet-glow)] md:inline-block"
         >
           Hire Me
@@ -112,7 +111,7 @@ export default function Navbar() {
             type="button"
             onClick={() => {
               setOpen(false);
-              setHireOpen(true);
+              openHire();
             }}
             className="mt-3 block w-full rounded-xl bg-violet-glow px-4 py-3 text-center text-sm font-medium"
           >
@@ -122,7 +121,6 @@ export default function Navbar() {
       )}
     </header>
 
-   <HireModal open={hireOpen} onClose={() => setHireOpen(false)} />
-  </>
+  
   );
 }
