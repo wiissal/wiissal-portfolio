@@ -23,7 +23,8 @@
 }
 
 @layer base {
-  html {
+  html:has(dialog[open]) {
+    overflow: hidden;
     scroll-behavior: smooth;
   }
 
