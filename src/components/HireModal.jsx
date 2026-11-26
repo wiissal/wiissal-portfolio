@@ -26,8 +26,7 @@ export default function HireModal({ open, onClose }) {
       aria-labelledby="hire-title"
       className="m-auto w-[calc(100%-2rem)] max-w-2xl rounded-3xl border border-white/10 bg-space-900 p-0 text-star shadow-[0_30px_80px_rgba(0,0,0,0.6)] transition duration-300 backdrop:bg-space-950/70 backdrop:backdrop-blur-sm starting:translate-y-4 starting:opacity-0"
     >
-      <div className="max-h-[85svh] overflow-y-auto p-6 md:p-8">
-        {/* header */}
+<div className="max-h-[85svh] overflow-y-auto p-6 [scrollbar-color:rgba(123,63,228,0.6)_transparent] [scrollbar-width:thin] md:p-8">        {/* header */}
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="font-mono text-xs tracking-[0.2em] text-cyan-glow">NEW_MISSION</p>
