@@ -47,7 +47,7 @@ export default function BlogPage() {
       </div>
 
       <Link href="/projects" className="mt-10 text-sm text-cyan-glow transition hover:text-star">
-        Explore my projects →
+        Explore my projects 
       </Link>
     </main>
   );
