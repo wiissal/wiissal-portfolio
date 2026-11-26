@@ -1,24 +1,14 @@
-"use client";
-
-import { useState } from "react";
 import Hero from "../components/Hero";
-import Projects from "./components/Projects";
+import FeaturedProjects from "../components/FeaturedProjects";
 import Services from "./components/Services";
-import Contact from "./components/Contact";
-import HireMe from "./components/HireMe";
 import Footer from "./components/Footer";
 
 export default function Home() {
-  const [hireOpen, setHireOpen] = useState(false);
-
   return (
     <>
-      
       <Hero />
-      <Projects />
+      <FeaturedProjects />
       <Services />
-      <Contact />
-      <HireMe isOpen={hireOpen} onClose={() => setHireOpen(false)} />
       <Footer />
     </>
   );
