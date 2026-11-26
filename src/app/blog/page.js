@@ -43,7 +43,7 @@ export default function BlogPage() {
 
       <div className="mt-10">
         <p className="text-sm text-muted">Follow along in the meantime</p>
-        <SocialLinks className="mt-3" />
+        <SocialLinks className="mt-3" justify-center/>
       </div>
 
       <Link href="/projects" className="mt-10 text-sm text-cyan-glow transition hover:text-star">
