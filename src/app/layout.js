@@ -42,13 +42,13 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
-      <body>
-        <HireProvider>
-         <Starfield />
-         <Navbar />
-         {children}
-        </HireProvider>
-      </body>
-    </html>
+    <body>
+   <HireProvider>
+    <Starfield />
+    <Navbar />
+    {children}
+    </HireProvider>
+    </body>
+   </html>
   )
 }
