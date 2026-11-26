@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import FeaturedProjects from "../components/FeaturedProjects";
-import Services from "./components/Services";
+import About from "../components/About";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <FeaturedProjects />
-      <Services />
+      <About />
       <Footer />
     </>
   );
