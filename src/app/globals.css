@@ -23,8 +23,10 @@
 }
 
 @layer base {
-  html {
+  html:has(dialog[open]) {
+    overflow: hidden;
     scroll-behavior: smooth;
+    scrollbar-color: rgba(123, 63, 228, 0.5) #05030d;
   }
 
   html,

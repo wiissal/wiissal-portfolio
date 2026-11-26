@@ -1,11 +1,11 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import HireModal from "./HireModal";
 
 const links = [
   { href: "/", label: "Home" },
@@ -21,13 +21,26 @@ function isActive(pathname, href) {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hireOpen, setHireOpen] = useState(false);
 
   return (
+  <>
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-2xl border border-white/10 bg-space-950/60 px-4 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:px-6">
         {/* logo */}
-        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <Image src="/logo.webp" alt="" width={36} height={36} priority className="h-9 w-9" />
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+          onClick={() => setOpen(false)}
+        >
+          <Image
+            src="/logo.webp"
+            alt="Wissal Ouboujemaa, home"
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9"
+          />
         </Link>
 
         {/* desktop links */}
@@ -55,12 +68,13 @@ export default function Navbar() {
         </ul>
 
         {/* hire me (desktop) */}
-        <Link
-          href="/contact"
+        <button
+          type="button"
+          onClick={() => setHireOpen(true)}
           className="hidden rounded-xl bg-violet-glow px-5 py-2.5 text-sm font-medium transition hover:shadow-[0_0_24px_var(--color-violet-glow)] md:inline-block"
         >
           Hire Me
-        </Link>
+        </button>
 
         {/* mobile toggle */}
         <button
@@ -94,15 +108,21 @@ export default function Navbar() {
               );
             })}
           </ul>
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="mt-3 block rounded-xl bg-violet-glow px-4 py-3 text-center text-sm font-medium"
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              setHireOpen(true);
+            }}
+            className="mt-3 block w-full rounded-xl bg-violet-glow px-4 py-3 text-center text-sm font-medium"
           >
             Hire Me
-          </Link>
+          </button>
         </div>
       )}
     </header>
+
+   <HireModal open={hireOpen} onClose={() => setHireOpen(false)} />
+  </>
   );
 }
