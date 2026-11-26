@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
 import FeaturedProjects from "../components/FeaturedProjects";
 import About from "../components/About";
+import HireCTA from "../components/HireCTA";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <FeaturedProjects />
       <About />
+      <HireCTA />
       <Footer />
     </>
   );
