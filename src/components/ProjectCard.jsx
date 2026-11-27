@@ -5,7 +5,7 @@ export default function ProjectCard({ project }) {
   const { title, category, description, problem, solution, tags, github, live, image, team } = project;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-white/10 bg-space-900/80 transition duration-500 hover:-translate-y-1.5 hover:border-violet-glow/60 hover:shadow-[0_20px_50px_rgba(123,63,228,0.3)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-space-900/80 transition duration-500 hover:-translate-y-1.5 hover:border-violet-glow/60 hover:shadow-[0_20px_50px_rgba(123,63,228,0.3)]">
       {/* image */}
       <div className="relative h-52 overflow-hidden bg-space-950">
         <Image

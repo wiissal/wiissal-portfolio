@@ -45,7 +45,7 @@ export default function ProjectsExplorer({ projects, categories }) {
                 type="button"
                 onClick={() => setCategory(c)}
                 aria-pressed={active}
-                className={`border px-4 py-2 font-mono text-xs tracking-[0.2em] transition ${
+                className={`rounded-xl border px-4 py-2 font-mono text-xs tracking-[0.2em] transition ${
                   active
                     ? "border-violet-glow bg-violet-glow text-star"
                     : "border-white/15 text-muted hover:border-cyan-glow hover:text-cyan-glow"
