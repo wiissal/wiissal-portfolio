@@ -5,9 +5,9 @@ import { projects } from "../data/projects";
 const icons = { web: Monitor, mobile: Smartphone, backend: Server };
 
 export default function About() {
-  const stats = [
+    const stats = [
     { value: `${projects.length}`, label: "Projects shipped" },
-    { value: "3", label: "Platforms: web, mobile, API" },
+    { value: "3", label: "Platforms" },
     { value: "5", label: "Languages spoken" },
   ];
 
@@ -26,11 +26,14 @@ export default function About() {
             database all the way to the last animation.
           </p>
 
-          <dl className="mt-10 grid grid-cols-3 gap-4">
+                    <dl className="mt-10 grid grid-cols-3 gap-4">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-white/10 bg-space-800/40 p-4">
-                <dt className="text-xs text-muted">{s.label}</dt>
-                <dd className="mt-1 font-display text-2xl font-bold text-star">{s.value}</dd>
+              <div
+                key={s.label}
+                className="flex flex-col-reverse rounded-2xl border border-white/10 bg-space-800/40 p-4"
+              >
+                <dt className="mt-1 text-xs text-muted">{s.label}</dt>
+                <dd className="font-display text-3xl font-bold text-star">{s.value}</dd>
               </div>
             ))}
           </dl>
