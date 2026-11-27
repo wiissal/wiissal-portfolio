@@ -25,7 +25,7 @@ export default function ContactPage() {
 
       <div className="mt-8 text-center">
         <p className="text-xs text-muted">Or reach me directly</p>
-        <SocialLinks className="mt-3" />
+        <SocialLinks className="mt-3" justify-center />
         <p className="mt-3 text-xs text-muted/70">Agadir, Morocco · Remote worldwide</p>
       </div>
     </main>

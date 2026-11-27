@@ -35,18 +35,18 @@ function Form({ onReset }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Your name" id="name" error={errors.name}>
-          <input id="name" name="name" type="text" autoComplete="name" placeholder="Jane Doe"
+          <input id="name" name="name" type="text" autoComplete="name" placeholder=""
             defaultValue={values.name} aria-invalid={!!errors.name} aria-describedby={describedBy("name")} className={inputClass} />
         </Field>
         <Field label="Email" id="email" error={errors.email}>
-          <input id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com"
+          <input id="email" name="email" type="email" autoComplete="email" placeholder=""
             defaultValue={values.email} aria-invalid={!!errors.email} aria-describedby={describedBy("email")} className={inputClass} />
         </Field>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Phone (optional)" id="phone" error={errors.phone}>
-          <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+212 6 00 00 00 00"
+          <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder=""
             defaultValue={values.phone} aria-invalid={!!errors.phone} aria-describedby={describedBy("phone")} className={inputClass} />
         </Field>
         <Field label="Subject" id="subject" error={errors.subject}>

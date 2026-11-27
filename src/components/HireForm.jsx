@@ -66,12 +66,12 @@ export default function HireForm({ onClose }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Your name" id="hire-name" error={errors.name}>
-          <input id="hire-name" name="name" type="text" autoComplete="name" placeholder="Jane Doe"
+          <input id="hire-name" name="name" type="text" autoComplete="name" placeholder=""
             defaultValue={values.name} aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "hire-name-error" : undefined} className={inputClass} />
         </Field>
         <Field label="Email" id="hire-email" error={errors.email}>
-          <input id="hire-email" name="email" type="email" autoComplete="email" placeholder="you@example.com"
+          <input id="hire-email" name="email" type="email" autoComplete="email" placeholder=""
             defaultValue={values.email} aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "hire-email-error" : undefined} className={inputClass} />
         </Field>

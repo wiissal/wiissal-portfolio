@@ -5,7 +5,7 @@ import { SUBJECTS } from "../../data/contact";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function validate({ name, email, subject, message }) {
+function validate({ name, email, phone, subject, message }) {
   const errors = {};
   if (name.length < 2) errors.name = "Please enter your name.";
   if (!EMAIL_RE.test(email)) errors.email = "Please enter a valid email.";

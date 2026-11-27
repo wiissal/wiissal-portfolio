@@ -51,7 +51,7 @@ export default function HireModal({ open, onClose }) {
         {/* footer */}
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
           <p className="text-xs text-muted">Prefer to reach out directly?</p>
-          <SocialLinks className="mt-3" />
+          <SocialLinks className="mt-3" justify-center />
         </div>
       </div>
     </dialog>

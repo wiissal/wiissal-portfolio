@@ -59,7 +59,7 @@ export const projects = [
     tags: ["React Native", "Node.js", "PostgreSQL", "Zustand"],
     github: "https://github.com/wiissal/take-a-chef",
     live: "",
-    image: "/images/take-a-chef.png",
+    image: "/images/take-a-chef.jpg",
   },
   {
     slug: "grande-soiree-gnawa",
