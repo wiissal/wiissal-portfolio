@@ -30,8 +30,8 @@ function LinkedInIcon({ size = 18 }) {
 }
 
 const links = [
-  { label: "Email", href: "mailto:YOUR_EMAIL", icon: Mail },
-  { label: "LinkedIn", href: "YOUR_LINKEDIN_URL", icon: LinkedInIcon },
+  { label: "Email", href: "mailto:wissaloa1@gmail.com", icon: Mail },
+  { label: "LinkedIn", href: "www.linkedin.com/in/wissalouboujemaa", icon: LinkedInIcon },
   { label: "GitHub", href: "https://github.com/wiissal", icon: GitHubIcon },
 ];
 
