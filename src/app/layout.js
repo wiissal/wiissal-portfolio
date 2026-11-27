@@ -1,16 +1,11 @@
-import { Playfair_Display, Orbitron, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Orbitron, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar' ; 
 import { HireProvider } from '../components/HireProvider'
 import Starfield from '../components/Starfield';
 import Footer from '../components/Footer'
 
-// old font: kept until the old components are replaced
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['700', '800'],
-  variable: '--font-playfair',
-})
+                                               
 
 // headings: wide, spaced, "space" look
 const orbitron = Orbitron({
@@ -41,7 +36,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${playfair.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
+      className={` ${orbitron.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
     <body>
    <HireProvider>
