@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
    <HireProvider>
     <Starfield />
     <Navbar />
-    {children}t
+    {children}                                                       
     <Footer />
     </HireProvider>
     </body>
