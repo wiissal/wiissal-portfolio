@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Link from "next/link";
 import SocialLinks from "./SocialLinks";
 
@@ -18,13 +18,7 @@ export default function Footer() {
         {/* brand */}
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image
-              src="/logo.webp"
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8"
-            />{" "}
+            
             <span className="font-display text-sm font-bold tracking-widest">
               WISSAL OUBOUJEMAA
             </span>
@@ -68,8 +62,8 @@ export default function Footer() {
 
       <div className="border-t border-white/5">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-muted sm:flex-row sm:justify-between">
-          <p>© {year} Wissal Ouboujemaa. All rights reserved.</p>
-          <p>Built with Next.js, Tailwind CSS &amp; Framer Motion</p>
+          <p>© {year} All rights reserved.</p>
+         
         </div>
       </div>
     </footer>
