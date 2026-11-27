@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import SearchBar from "./SearchBar";
+import Reveal from "./ui/Reveal";
 
 export default function ProjectsExplorer({ projects, categories }) {
   const [category, setCategory] = useState("All");
@@ -14,7 +15,10 @@ export default function ProjectsExplorer({ projects, categories }) {
       const matchesCategory = category === "All" || p.category === category;
       const matchesQuery =
         !q ||
-        [p.title, p.category, p.description, ...p.tags].join(" ").toLowerCase().includes(q);
+        [p.title, p.category, p.description, ...p.tags]
+          .join(" ")
+          .toLowerCase()
+          .includes(q);
       return matchesCategory && matchesQuery;
     });
   }, [projects, category, query]);
@@ -69,8 +73,10 @@ export default function ProjectsExplorer({ projects, categories }) {
       {/* grid or empty state */}
       {visible.length > 0 ? (
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visible.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+          {visible.map((project, i) => (
+            <Reveal key={project.slug} delay={(i % 3) * 0.1} className="h-full">
+              <ProjectCard project={project} />
+            </Reveal>
           ))}
         </div>
       ) : (

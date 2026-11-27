@@ -27,7 +27,6 @@ export default function Hero() {
         animate="show"
         className="absolute bottom-8 right-8 z-20 hidden items-center gap-2 whitespace-nowrap rounded-full border border-cyan-glow/30 bg-space-950/50 px-4 py-1.5 font-mono text-xs tracking-[0.2em] text-cyan-glow backdrop-blur-sm md:flex"
       >
-        
         AVAILABLE FOR NEW MISSIONS
       </motion.p>
 
@@ -38,7 +37,7 @@ export default function Hero() {
         image="/planets/planet-fullstack.webp"
         size={190}
         color="#7b3fe4"
-        className="left-[6%] top-[22%] hidden lg:block"
+        className="left-[3%] top-[14%] lg:left-[6%] lg:top-[22%]"
       />
       <Planet
         label="MOBILE"
@@ -46,7 +45,7 @@ export default function Hero() {
         image="/planets/planet-mobile.webp"
         size={130}
         color="#2ec4f1"
-        className="left-[25%] top-[16%] hidden lg:block"
+        className="right-[8%] top-[13%] lg:left-[25%] lg:right-auto lg:top-[16%]"
         delay={1}
       />
       <Planet
@@ -55,7 +54,7 @@ export default function Hero() {
         image="/planets/planet-uiux.webp"
         size={120}
         color="#f59e0b"
-        className="right-[25%] top-[18%] hidden lg:block"
+        className="left-[6%] top-[36%] lg:left-auto lg:right-[25%] lg:top-[18%]"
         delay={2}
       />
       <Planet
@@ -64,12 +63,11 @@ export default function Hero() {
         image="/planets/planet-backend.webp"
         size={200}
         color="#c2703d"
-        className="right-[6%] top-[36%] hidden lg:block"
+        className="right-[3%] top-[30%] lg:right-[6%] lg:top-[36%]"
         delay={0.5}
       />
-
       {/* astronaut: outer div positionsinner motion.div animates */}
-      <div className="absolute bottom-[33%] left-1/2 z-10 -translate-x-1/2">
+      <div className="absolute bottom-[39%] left-1/2 z-10 -translate-x-1/2 md:bottom-[33%]">
         <motion.div
           animate={
             reduceMotion ? {} : { y: [0, -8, 0], rotate: [-1.5, 1.5, -1.5] }
@@ -82,7 +80,7 @@ export default function Hero() {
             width={340}
             height={885}
             priority
-            className="h-[32vh] w-auto drop-shadow-[0_0_30px_rgba(123,63,228,0.45)] md:h-[38vh]"
+            className="h-[24vh] w-auto drop-shadow-[0_0_30px_rgba(123,63,228,0.45)] md:h-[38vh]"
           />
         </motion.div>
       </div>
@@ -90,7 +88,7 @@ export default function Hero() {
       {/* planet ground */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-[45%] left-1/2 h-[80%] w-[170%] -translate-x-1/2 rounded-[50%] bg-linear-to-b from-violet-glow/80 via-space-800 to-space-950 shadow-[0_-20px_80px_rgba(123,63,228,0.55)]"
+        className="pointer-events-none absolute -bottom-[40%] left-1/2 h-[80%] w-[170%] -translate-x-1/2 rounded-[50%] bg-linear-to-b from-violet-glow/80 via-space-800 to-space-950 shadow-[0_-20px_80px_rgba(123,63,228,0.55)] md:-bottom-[45%]"
       />
 
       {/* name written on the ground */}
@@ -124,17 +122,17 @@ export default function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="mt-8 flex flex-wrap justify-center gap-4"
+          className="mt-8 flex justify-center gap-3"
         >
           <Link
             href="/projects"
-            className="bg-violet-glow px-8 py-3.5 font-mono text-sm tracking-[0.2em] transition hover:shadow-[0_0_30px_var(--color-violet-glow)]"
+            className="rounded-xl bg-violet-glow px-5 py-3 font-mono text-xs tracking-[0.15em] transition hover:shadow-[0_0_30px_var(--color-violet-glow)] md:px-8 md:py-3.5 md:text-sm md:tracking-[0.2em]"
           >
             EXPLORE_WORK
           </Link>
           <Link
             href="/contact"
-            className="border border-star/30 bg-space-950/40 px-8 py-3.5 font-mono text-sm tracking-[0.2em] backdrop-blur-sm transition hover:border-cyan-glow hover:text-cyan-glow"
+            className="rounded-xl border border-star/30 bg-space-950/40 px-5 py-3 font-mono text-xs tracking-[0.15em] backdrop-blur-sm transition hover:border-cyan-glow hover:text-cyan-glow md:px-8 md:py-3.5 md:text-sm md:tracking-[0.2em]"
           >
             INITIATE_CONTACT
           </Link>

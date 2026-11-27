@@ -30,13 +30,13 @@ export default function About() {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="flex flex-col-reverse rounded-2xl border border-white/10 bg-space-800/40 p-4"
+                className="flex flex-col-reverse  justify-end unded-2xl border border-white/10 bg-space-800/40 p-4"
               >
                 <dt className="mt-1 text-xs text-muted">{s.label}</dt>
                 <dd className="font-display text-3xl font-bold text-star">{s.value}</dd>
               </div>
             ))}
-          </dl>
+          </dl>         
         </div>
 
         {/* services */}
