@@ -37,7 +37,7 @@ export default function Hero() {
         image="/planets/planet-fullstack.webp"
         size={190}
         color="#7b3fe4"
-        className="left-[-6%] top-[14%] lg:left-[6%] lg:top-[22%]"
+        className="left-[3%] top-[14%] lg:left-[6%] lg:top-[22%]"
       />
       <Planet
         label="MOBILE"
@@ -63,7 +63,7 @@ export default function Hero() {
         image="/planets/planet-backend.webp"
         size={200}
         color="#c2703d"
-        className="right-[-6%] top-[30%] lg:right-[6%] lg:top-[36%]"
+        className="right-[3%] top-[30%] lg:right-[6%] lg:top-[36%]"
         delay={0.5}
       />
       {/* astronaut: outer div positionsinner motion.div animates */}
