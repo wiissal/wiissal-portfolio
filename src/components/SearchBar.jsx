@@ -34,7 +34,7 @@ export default function SearchBar({ value, onChange }) {
   }
 
   return (
-    <div className="group relative flex items-center border border-white/15 bg-space-950/70 backdrop-blur-sm transition focus-within:border-cyan-glow focus-within:shadow-[0_0_0_3px_rgba(46,196,241,0.15),0_0_30px_rgba(46,196,241,0.2)] md:w-96">
+    <div className=" rounded-xl group relative flex items-center border border-white/15 bg-space-950/70 backdrop-blur-sm transition focus-within:border-cyan-glow focus-within:shadow-[0_0_0_3px_rgba(46,196,241,0.15),0_0_30px_rgba(46,196,241,0.2)] md:w-96">
       <span aria-hidden="true" className="pl-4 font-mono text-sm text-cyan-glow">&gt;</span>
 
       <label htmlFor="project-search" className="sr-only">Search projects</label>
@@ -57,7 +57,7 @@ export default function SearchBar({ value, onChange }) {
             <X size={16} />
           </button>
         ) : (
-          <kbd className="hidden border border-white/20 px-1.5 py-0.5 font-mono text-[10px] text-muted md:inline">/</kbd>
+          <kbd className="rounded-md hidden border border-white/20 px-1.5 py-0.5 font-mono text-[10px] text-muted md:inline">/</kbd>
         )}
         <Search size={16} aria-hidden="true" className="text-muted transition group-focus-within:text-cyan-glow" />
       </div>
