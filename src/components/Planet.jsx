@@ -19,16 +19,15 @@ export default function Planet({
   return (
     <motion.div
       className={`absolute ${className}`}
-      animate={reduceMotion ? {} : {y: [0, -25, 0], x: [0, 8, 0] }}
+      animate={reduceMotion ? {} : { y: [0, -25, 0], x: [0, 8, 0] }}
       transition={{ duration: 4, delay, repeat: Infinity, ease: "easeInOut" }}
     >
       <Link
         href={href}
         aria-label={label}
-        className="group relative flex items-center justify-center rounded-full transition-transform duration-500 hover:scale-110"
+        className="group relative flex size-[calc(var(--size)*0.55)] items-center justify-center rounded-full transition-transform duration-500 hover:scale-110 md:size-[calc(var(--size)*0.75)] lg:size-[var(--size)]"
         style={{
-          width: size,
-          height: size,
+          "--size": `${size}px`,
           background: image
             ? undefined
             : `radial-gradient(circle at 30% 30%, ${glow} 0%, ${color} 45%, #05030d 100%)`,
@@ -53,7 +52,7 @@ export default function Planet({
         <span className="absolute inset-0 rounded-full opacity-0 ring-2 ring-cyan-glow/60 transition-opacity duration-500 group-hover:opacity-100" />
 
         {/* label */}
-        <span className="relative font-display text-xs font-bold tracking-[0.25em] text-star drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-sm">
+        <span className="relative max-w-[85%] text-center font-display text-[8px] font-bold leading-tight tracking-[0.2em] text-star drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-xs lg:text-sm">
           {label}
         </span>
       </Link>
