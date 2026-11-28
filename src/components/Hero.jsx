@@ -30,8 +30,12 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
   const m = reduceMotion ? 0 : 1; // turn everything off for reduced motion
-  const far = useParallax(smoothX, smoothY, scrollYProgress, 120 * m, -420 * m);
-  const near = useParallax(smoothX, smoothY, scrollYProgress,  70 * m, -260 * m);
+    // each planet: its own mouse depth (negative = opposite direction) and scroll speed
+  const pFull = useParallax(smoothX, smoothY, scrollYProgress, 110 * m, -420 * m);
+  const pMobile = useParallax(smoothX, smoothY, scrollYProgress, -70 * m, -300 * m);
+  const pUiux = useParallax(smoothX, smoothY, scrollYProgress, 55 * m, -200 * m);
+  const pBackend = useParallax(smoothX, smoothY, scrollYProgress, -95 * m, -360 * m);
+
   const astro = useParallax(smoothX, smoothY, scrollYProgress, 30 * m, 120 * m);
   const ground = useParallax(smoothX, smoothY, scrollYProgress, 14 * m, 220 * m);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, reduceMotion ? 1 : 0]);
@@ -58,7 +62,7 @@ export default function Hero() {
       </motion.p>
 
       {/* far planets: big, move the most */}
-      <motion.div style={far} className="pointer-events-none absolute inset-0">
+        <motion.div style={pFull} className="pointer-events-none absolute inset-0">
         <Planet
           label="FULL STACK"
           href="/projects"
@@ -67,6 +71,8 @@ export default function Hero() {
           color="#7b3fe4"
           className="left-[3%] top-[14%] lg:left-[6%] lg:top-[22%]"
         />
+        </motion.div>
+          <motion.div style={pBackend} className="pointer-events-none absolute inset-0">
         <Planet
           label="BACKEND & API"
           href="/projects"
@@ -76,10 +82,9 @@ export default function Hero() {
           className="right-[3%] top-[30%] lg:right-[6%] lg:top-[36%]"
           delay={0.5}
         />
-      </motion.div>
-
+        </motion.div>
       {/* near planets */}
-      <motion.div style={near} className="pointer-events-none absolute inset-0">
+      <motion.div style={pMobile} className="pointer-events-none absolute inset-0">
         <Planet
           label="MOBILE"
           href="/projects"
@@ -89,6 +94,8 @@ export default function Hero() {
           className="right-[8%] top-[13%] lg:left-[25%] lg:right-auto lg:top-[16%]"
           delay={1}
         />
+        </motion.div>
+        <motion.div style={pUiux} className="pointer-events-none absolute inset-0">
         <Planet
           label="UI / UX"
           href="/projects"
