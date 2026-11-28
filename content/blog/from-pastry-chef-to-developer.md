@@ -3,7 +3,7 @@ title: "From pastry chef to developer: how I changed careers and started over"
 date: "2026-11-28"
 summary: "I spent years in professional kitchens before I wrote my first line of code. Here's how I switched to tech, what was hard, and why my pastry years made me a better developer."
 tags: ["career change", "bootcamp", "journey"]
-draft: true
+draft: false 
 pinned: true
 ---
 
