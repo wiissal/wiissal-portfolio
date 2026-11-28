@@ -25,7 +25,7 @@ export default function Planet({
       <Link
         href={href}
         aria-label={label}
-        className="group relative flex size-[calc(var(--size)*0.55)] items-center justify-center rounded-full transition-transform duration-500 hover:scale-110 md:size-[calc(var(--size)*0.75)] lg:size-[var(--size)]"
+        className="group relative flex size-[calc(var(--size)*0.55)] items-center justify-center rounded-full transition-transform duration-500 hover:scale-110 md:size-[calc(var(--size)*0.75)] lg:size-[var(--size) pointer-events-auto]"
         style={{
           "--size": `${size}px`,
           background: image
