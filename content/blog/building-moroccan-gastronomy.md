@@ -3,7 +3,7 @@ title: "Building Moroccan Gastronomy: the decisions behind my first real product
 date: "2026-11-28"
 summary: "How I took a Moroccan food website from a React + Vite prototype to a live Next.js 16 site on its own domain, and the choices I made along the way: stack, design, workflow and email."
 tags: ["nextjs", "tailwind", "project", "build in public"]
-draft: true
+draft: false
 ---
 
 [Moroccan Gastronomy](https://www.gastromoroccan.com) is a website about Moroccan recipes, food culture and ingredients, built for a worldwide audience. It's my first real product: live, on its own domain, and built in public on LinkedIn.

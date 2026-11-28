@@ -3,7 +3,7 @@ title: "I merged into main by mistake. Here's how I rescued my live site"
 date: "2026-11-28"
 summary: "A wrong pull request put my half-finished redesign live. How I rolled back with git reset, a safe force-push and Vercel, and what I changed so it can't happen again."
 tags: ["git", "github", "vercel", "workflow"]
-draft: true
+draft: false
 ---
 
 I was redesigning my portfolio on a `develop` branch, keeping `main` clean and live. Then I opened a small pull request, clicked merge, and a few minutes later my live site was showing an unfinished redesign.
