@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar' ;
 import { HireProvider } from '../components/HireProvider'
 import Starfield from '../components/Starfield';
 import Footer from '../components/Footer'
-
+import CursorTrail from '../components/CursorTrail'
                                                
 
 // headings: wide, spaced, "space" look
@@ -44,6 +44,7 @@ export default function RootLayout({ children }) {
     <Navbar />
     {children}                                                       
     <Footer />
+    <CursorTrail />
     </HireProvider>
     </body>
    </html>
