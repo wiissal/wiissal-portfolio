@@ -36,12 +36,12 @@ export function getAllPosts() {
         summary: data.summary,
         tags: data.tags ?? [],
         draft: data.draft ?? false,
+        pinned: data.pinned ?? false,
         readingTime: readingTime(content),
       };
     })
     .filter((post) => !post.draft || isDev)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-}
+  .sort((a, b) => Number(b.pinned) - Number(a.pinned) || new Date(b.date) - new Date(a.date));}
 
 export async function getPost(slug) {
   if (!SLUG_RE.test(slug)) return null; // blocks "../" path tricks
