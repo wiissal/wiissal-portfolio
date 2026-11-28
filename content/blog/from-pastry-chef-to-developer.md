@@ -4,6 +4,7 @@ date: "2026-11-28"
 summary: "I spent years in professional kitchens before I wrote my first line of code. Here's how I switched to tech, what was hard, and why my pastry years made me a better developer."
 tags: ["career change", "bootcamp", "journey"]
 draft: true
+pinned: true
 ---
 
 For years, my world was kitchens: recipes, ingredients, deadlines, and the art of pastry. Today I build web and mobile apps. This is how that happened, what was hard, and what I'd tell anyone thinking about doing the same.
