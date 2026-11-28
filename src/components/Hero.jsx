@@ -67,7 +67,7 @@ export default function Hero() {
         delay={0.5}
       />
       {/* astronaut: outer div positionsinner motion.div animates */}
-      <div className="absolute bottom-[39%] left-1/2 z-10 -translate-x-1/2 md:bottom-[33%]">
+      <div className="absolute bottom-[39%] left-1/2 z-10 -translate-x-1/2 md:bottom-[36%]">
         <motion.div
           animate={
             reduceMotion ? {} : { y: [0, -8, 0], rotate: [-1.5, 1.5, -1.5] }
@@ -85,11 +85,17 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* planet ground */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-[40%] left-1/2 h-[80%] w-[170%] -translate-x-1/2 rounded-[50%] bg-linear-to-b from-violet-glow/80 via-space-800 to-space-950 shadow-[0_-20px_80px_rgba(123,63,228,0.55)] md:-bottom-[45%]"
-      />
+           {/* planet surface */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] md:h-[45%]">
+        <Image
+          src="/hero/planet-surface.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+      </div>
 
       {/* name written on the ground */}
       <div className="absolute inset-x-0 bottom-[7%] z-20 px-6 text-center">
