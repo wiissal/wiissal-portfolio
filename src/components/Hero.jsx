@@ -86,7 +86,7 @@ export default function Hero() {
       </div>
 
            {/* planet surface */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] md:h-[45%]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] [mask-image:linear-gradient(to_bottom,transparent,black_15%)] md:h-[45%]">
         <Image
           src="/hero/planet-surface.webp"
           alt=""
