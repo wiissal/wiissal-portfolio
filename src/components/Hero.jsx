@@ -108,10 +108,11 @@ export default function Hero() {
       </motion.div>
 
       {/* planet surface (before the astronaut so he stands in front) */}
-      <motion.div style={ground} className="pointer-events-none absolute inset-0">
+            {/* planet surface (before the astronaut so he stands in front) */}
+      <motion.div style={ground} className="pointer-events-none absolute -inset-x-8 inset-y-0">
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-[42%] [mask-image:linear-gradient(to_bottom,transparent,black_15%)] md:h-[45%]"
+          className="absolute inset-x-0 bottom-0 h-[42%] [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_70%,transparent)] md:h-[45%]"
         >
           <Image
             src="/hero/planet-surface.webp"
