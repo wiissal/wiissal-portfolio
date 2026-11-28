@@ -18,7 +18,7 @@ export default function Footer() {
         {/* brand */}
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image src="/logo.webp" alt="" width={32} height={32} className="h-8 w-8" />
+            <Image src="/icon.png" alt="" width={32} height={32} className="h-8 w-8" />
             <span className="font-display text-sm font-bold tracking-widest">
               WISSAL OUBOUJEMAA
             </span>
