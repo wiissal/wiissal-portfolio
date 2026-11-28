@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3 4 59 59">
+  <defs>
+    <linearGradient id="w" x1="8" y1="14" x2="48" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#b9a7ff"/>
+    </linearGradient>
+  </defs>
+  <!-- echo layer for depth -->
+  <path d="M9 17 V31 a9.5 9.5 0 0 0 19 0 V17 V31 a9.5 9.5 0 0 0 19 0 V17" transform="translate(0 3.5)"
+        fill="none" stroke="#3b2a6e" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+  <!-- the w -->
+  <path d="M9 17 V31 a9.5 9.5 0 0 0 19 0 V17 V31 a9.5 9.5 0 0 0 19 0 V17"
+        fill="none" stroke="url(#w)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- the dot -->
+  <circle cx="56.5" cy="40.5" r="4.8" fill="#5ee0b8"/>
+</svg>

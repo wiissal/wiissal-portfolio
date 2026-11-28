@@ -33,7 +33,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/logo.webp"
+            src="/logo.svg"
             alt="Wissal Ouboujemaa, home"
             width={36}
             height={36}
